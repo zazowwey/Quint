@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  /* Color */
+  --white:#F5F5F5;
+  --grey:#4A4A4A;
+  --black:#1A1A1A;
+  --accent:#2900F9;
+
+  /* Typography */
+
+  /* Font family */
+  --font-Heading: var(--font-F01);
+  --font-Body: var(--font-F02);
+
+  /* Heading */
+  --h01: 80px;
+  --h02: 64px;
+  --h03: 56px;
+  --h04: 48px;
+  --h05: 36px;
+  --h06: 24px;
+
+  /* Body text */
+  --b01: 18px;
+  --b02: 16px;
+  --b03: 14px;
+
+  /* Button text */
+  --bt01: 24px; 
+  --bt02: 18px;
+  --navlink: 110px;
+
+  /* Display text */
+  --D01: 200px;
+  --D02: 150px;
+  --D03: 40px;
+
+  /* Line heights */
+  --LH01: 1em;
+  --LH02: 1.2em;
+
+  /* Letter spacing */
+  --LS01: -0.01em;
+  --LS02: -0.02em;
+
+  /* Font weight */
+  --FW01: 400;
+
+  /* padding */
+  --MP: 24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@media (max-width: 1024px) {
+    :root {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* TYPOGRAPHY */
+
+    /* Heading */
+    --h01: 72px;
+    --h02: 64px;
+    --h03: 40px;
+    --h04: 32px;
+    --h05: 24px;
+    --h06: 20px;
+
+    /* Body text */
+    --b01: 15px;
+    --b02: 14px;
+    --b03: 14px;
+
+    /* Button text */
+    --bt01: 20px; 
+    --bt02: 18px;
+    --navlink: 40px;
+
+    /* Display text */
+    --D01: 140px;
+    --D02: 96px;
+    --D03: 24px;
+
   }
 }
 
+@media (max-width: 768px) {
+    :root {
+
+    /* TYPOGRAPHY */
+
+    /* Heading */
+    --h01: 56px;
+    --h02: 48px;
+    --h03: 32px;
+    --h04: 26px;
+    --h05: 20px;
+    --h06: 16px;
+
+    /* Body text */
+    --b01: 14px;
+    --b02: 14px;
+    --b03: 14px;
+
+    /* Button text */
+    --bt01: 16px; 
+    --bt02: 14px;
+    --navlink: 40px;
+
+    /* Display text */
+    --D01: 80px;
+    --D02: 60px;
+    --D03: 24px;
+
+  }
+}
+
+@media (max-width: 640px) {
+    :root {
+
+    /* TYPOGRAPHY */
+
+    /* Heading */
+    --h01: 56px;
+    --h02: 48px;
+    --h03: 32px;
+    --h04: 26px;
+    --h05: 20px;
+    --h06: 16px;
+
+    /* Body text */
+    --b01: 14px;
+    --b02: 14px;
+    --b03: 14px;
+
+    /* Button text */
+    --bt01: 16px; 
+    --bt02: 14px;
+    --navlink: 40px;
+
+    /* Display text */
+    --D01: 80px;
+    --D02: 60px;
+    --D03: 24px;
+
+  }
+}
+
+
+@theme inline {
+  /* Color */
+  --C100: var(--white);
+  --C200: var(--grey);
+  --C300: var(--black);
+  --C400: var(--accent); 
+
+  /* Typography */
+
+  /* Font family */
+  --font-Primary: var(--font-Heading);
+  --font-Secondary: var(--font-Body);
+
+  /* Heading */
+  --h001: var(--h01);
+  --h002: var(--h02);
+  --h003: var(--h03);
+  --h004: var(--h04);
+  --h005: var(--h05);
+  --h006: var(--h06);
+
+  /* Body text */
+  --b001: var(--b01);
+  --b002: var(--b02); 
+  --b003: var(--b03);
+
+  /* Button text */
+  --btn1: var(--bt01); 
+  --btn2: var(--bt02);
+  --nav-link: var(--navlink);
+
+  /* Display text */
+  --d001: var(--D01);
+  --d002: var(--D02);
+  --d003: var(--D03);
+
+  /* Line heights */
+  --lh01: var(--LH01);
+  --lh02: var(--LH02);
+
+  /* Letter spacing */
+  --ls01: var(--LS01);
+  --ls02: var(--LS02);
+
+  /* Font weight */
+  --normal: var(--FW01);
+
+  /* padding */
+  --main-padding: var(--MP);
+}
+
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--C300);
+  color: var(--C100);
+  font-family: var(--font-Primary), var(--font-Secondary);
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-Primary);
 }
