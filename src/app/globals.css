@@ -52,7 +52,7 @@
   --MP: 24px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1536px) {
     :root {
 
     /* TYPOGRAPHY */
@@ -76,9 +76,9 @@
     --navlink: 40px;
 
     /* Display text */
-    --D01: 140px;
-    --D02: 96px;
-    --D03: 24px;
+    --D01: 180px;
+    --D02: 150px;
+    --D03: 40px;
 
   }
 }
@@ -168,9 +168,9 @@
   --h006: var(--h06);
 
   /* Body text */
-  --b001: var(--b01);
-  --b002: var(--b02); 
-  --b003: var(--b03);
+  --text-b001: var(--b01);
+  --text-b002: var(--b02); 
+  --text-b003: var(--b03);
 
   /* Button text */
   --btn1: var(--bt01); 
@@ -178,9 +178,9 @@
   --nav-link: var(--navlink);
 
   /* Display text */
-  --d001: var(--D01);
-  --d002: var(--D02);
-  --d003: var(--D03);
+  --text-d001: var(--D01);
+  --text-d002: var(--D02);
+  --text-d003: var(--D03);
 
   /* Line heights */
   --lh01: var(--LH01);
@@ -205,6 +205,61 @@ body {
   /* font-family: Arial, Helvetica, sans-serif; */
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-Primary);
+} */
+
+h1 {
+  font-family: var(--font-Primary);
+  font-size: var(--h001);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+h2 {
+  font-family: var(--font-Primary);
+  font-size: var(--h002);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+h3 {
+  font-family: var(--font-Primary);
+  font-size: var(--h003);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+h4 {
+  font-family: var(--font-Primary);
+  font-size: var(--h004);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+h5 {
+  font-family: var(--font-Primary);
+  font-size: var(--h005);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+h6 {
+  font-family: var(--font-Primary);
+  font-size: var(--h006);
+  line-height: var(--lh02);
+  Letter-spacing: var(--ls02);
+  font-weight: var(--normal);
+}
+
+p {
+  /* font-family: var(--font-Secondary); */
+  line-height: var(--lh02);
+  letter-spacing: var(--ls02);
+  font-weight: var(--normal);
 }
