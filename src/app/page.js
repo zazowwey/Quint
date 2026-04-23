@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Projects from "./components/projects/Projects";
 import Service from "./components/service/service";
+import Testimonial from "./components/testimoni/Testimonial";
 
 export default function Home() {
   return (
@@ -260,33 +261,104 @@ export default function Home() {
             />
 
             <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
+              service = "Editorial & Publication"
+              service_desc = "Layouts for books or magazines."
             />
 
             <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
+              service = "Presentation Design"
+              service_desc = "Better slides for pitches."
             />
 
             <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
+              service = "Design Systems"
+              service_desc = "Rules for your UI."
             />
 
             <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
+              service = "Rebranding"
+              service_desc = "Giving you a makeover."
             />
 
             <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
-            />
+              service = "Digital Portfolio"
+              service_desc = "Show off your project."
+            />  
+
+            <Service 
+              service = "Landing Page"
+              service_desc = "Sites that get clicks."
+            /> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonial Section */}
+    <section className = "w-full h-auto px-(--main-padding) bg-(--C300)">
+      <div className = "w-[100%] mx-auto h-auto ">
+        <div className = "h-auto relative">
+
+          <div className = "w-[100%] flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px] h-auto relative z-[3]">
             
+            <div className = "flex flex-col items-center justify-center">
+              <h6 className = "text-(--C100)">Written</h6>
+              <h2 className = "text-(--C100)">Trusted by Creative Partners.</h2>
+            </div>
+
+            <div className = "flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px]">
+
+              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[40px] w-[100%] h-auto relative">
+                <Testimonial
+                  testimonial_image = "/testimonial/T01.png"
+                  user_name = "Daniel Hart"
+                  testimoni = "They understand how editorial design should function—structured, elegant, and purposeful. The final result exceeded our expectations in both form and usability."
+                />
+              </div>
+
+              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[223px] pt-[178px] w-[100%] h-auto relative">
+                <div className = "absolute top-[-315px] left-auto bottom-0 right-0">
+                  <Testimonial
+                    testimonial_image = "/testimonial/T02.png"
+                    user_name = "Olivia Wilson"
+                    testimoni = "Working with the team was a seamless experience. Their attention to typography, layout, and storytelling transformed our ideas into a publication that feels both refined and expressive."
+                  />
+                </div>
+              </div>
+
+
+              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[223px] pt-[178px] w-[100%] h-auto relative">
+                <Testimonial
+                  testimonial_image = "/testimonial/T04.png"
+                  user_name = "Sofia Ramirez"
+                  testimoni = "From concept to final print, every detail was thoughtfully crafted. The balance between visual identity and readability made our content stronger and more engaging."
+                />
+              </div>
+
+              <div className = "flex flex-row items-center justify-end gap-[30px] pr-[222px] w-[100%] h-auto relative">
+                <Testimonial
+                  testimonial_image = "/testimonial/T03.png"
+                  user_name = "Elena Fischer"
+                  testimoni = "Their approach to typography and grid systems created a beautiful rhythm across every page. It's rare to see design that feels this intentional and cohesive."
+                />
+              </div>
+
+            </div>
+
+
+
           </div>
 
-          
+           <div className = "w-[100%] flex flex-row items-stretch justify-between h-[100%] absolute z-[1] top-0 left-0 right-0 bottom-0 border-l-[1px] border-r-[1px] border-(--C200)">
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+            </div>
 
         </div>
       </div>
