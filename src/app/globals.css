@@ -173,9 +173,9 @@
   --text-b003: var(--b03);
 
   /* Button text */
-  --btn1: var(--bt01); 
-  --btn2: var(--bt02);
-  --nav-link: var(--navlink);
+  --text-btn1: var(--bt01); 
+  --text-btn2: var(--bt02);
+  --text-nav-link: var(--navlink);
 
   /* Display text */
   --text-d001: var(--D01);
