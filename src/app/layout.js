@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Cta from "./components/CTA/cta";
 import Footer from "./components/Footer/Footer";
+import Nav_menu from "./components/Nav_Menu/nav_menu";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-F01",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
+        <Nav_menu />
 
         {children}
 

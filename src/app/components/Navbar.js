@@ -1,3 +1,4 @@
+import Primary from "./Primary_button/Primary";
 
 export default function Navbar(){
     return(
@@ -50,13 +51,16 @@ export default function Navbar(){
 
                             {/* Brand */}
 
-                            <div className = "w-auto h-auto px-[20px] py-[11px] overflow-hidden relative z-3 bg-white rounded-full flex items-center justify-end gap-[10px]">
+                            {/* <div className = "w-auto h-auto px-[20px] py-[11px] overflow-hidden relative z-3 bg-white rounded-full flex items-center justify-end gap-[10px]">
                                 <h6 className ="text-(--C300) right-[16px] blend-difference flex flex-row items-start z-3 fw-bold">
                                     Let's Talk 
                                 </h6>
                                     
                                 <img src="/images/Vector.svg" alt="logo" className="w-[16px] h-[16px]"/>  
-                            </div> 
+                            </div>  */}
+                            <Primary
+                                primary_button_text = "Let's Talk"
+                            />
 
                             
                         </div>

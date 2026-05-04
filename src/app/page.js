@@ -88,13 +88,21 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Hero image */}
+          <div className = "hidden flex flex-row items-center justify-center overflow-hidden absolute z-[10] top-0 bottom-0 right-0 left-0 ">
+            <img src="images/hero_04.png" alt="hero images 4" className="w-[604px] h-[340px] object-cover absolute z-[1] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[32deg]" />
+            <img src="images/hero_03.png" alt="hero images 3" className="w-[604px] h-[340px] object-cover absolute z-[2] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-14deg]" />
+            <img src="images/hero_02.png" alt="hero images 2" className="w-[604px] h-[340px] object-cover absolute z-[3] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-24deg] translate-x-[34px] translate-y-[43px]" />
+            <img src="images/hero_01.png" alt="hero images 1" className="w-[604px] h-[340px] object-cover absolute z-[4] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[28deg] translate-x-[20px] translate-y-[20px]" />
+          </div>
         </div>
       </div>
     </section>
 
     {/* About section */}
 
-    <section className = "w-full px-(--main-padding) h-[100vh] pb-[21px] bg-(--C100)">
+    <section className = "w-full px-(--main-padding) h-[100vh] pb-[21px] pt-[50px] bg-(--C100)">
       <div className = "w-full h-[100vh] flex flex-row items-center justify-center">
         <div className = "w-full h-[100%] flex flex-col items-stretch justify-center gap-[57px] relative">
           <div className = "w-full h-[100%] flex flex-col items-stretch justify-center gap-[64px] relative">

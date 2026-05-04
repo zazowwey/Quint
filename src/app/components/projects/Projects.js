@@ -1,3 +1,5 @@
+import Secondary from "../Secondary_button/Secondary";
+
 export default function Projects({file_name , project_name, project_year, projects_desc, project_image_01, project_file_01_A, project_file_01_B, project_image_02, project_file_02_A, project_file_02_B, project_image_03, project_file_03_A, project_file_03_B, wedo_01, wedo_02, wedo_03, wedo_04, padding_top}){
     return(
         <div className = " w-full h-[100%] flex flex-row items-start justify-end overflow-hidden"> 
@@ -27,9 +29,11 @@ export default function Projects({file_name , project_name, project_year, projec
                             </div>
                         </div>
 
-                        <div className = "grid grid-cols-3 gap-[80px]">
-                            <p className = "col-span-2 text-b002 font-Secondary text-(--C300) w-[100%] max-w-[372px]">{projects_desc}</p>
-                            <div className = "col-span-1 w-auto"></div>
+                        <div className = "flex flex-row items-end justify-start gap-[80px]">
+                            <p className = " text-b002 font-Secondary text-(--C300) w-[100%] max-w-[372px]">{projects_desc}</p>
+                            <div className = " w-auto relative">
+                                <Secondary Button_text = "View Project"/>
+                            </div>
                         </div>
                     </div>
 

@@ -183,12 +183,12 @@
   --text-d003: var(--D03);
 
   /* Line heights */
-  --lh01: var(--LH01);
-  --lh02: var(--LH02);
+  --leading-lh01: var(--LH01);
+  --leading-lh02: var(--LH02);
 
   /* Letter spacing */
-  --ls01: var(--LS01);
-  --ls02: var(--LS02);
+  --tracking-ls01: var(--LS01);
+  --tracking-ls02: var(--LS02);
 
   /* Font weight */
   --normal: var(--FW01);
