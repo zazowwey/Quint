@@ -1,4 +1,13 @@
-export default function Footer(){
+import { supabase } from "@/lib/supabase/client";
+
+
+export default async function Footer(){
+
+    const { data: footer } = await supabase
+        .from("footer_content")
+        .select("*")
+        .single();
+
     return(
         <section className = "pt-[120px] overflow-hidden bg-(--C100)">
             <div className = "mx-auto w-[100%]">
@@ -12,10 +21,10 @@ export default function Footer(){
 
                         <div className = "flex flex-col items-stretch justify-start gap-[16px]">
                             <div className = "w-[100%] px-(--main-padding) relative border-b-[1px] border-(--C200)">
-                                <p className = "text-b002 text-(--C300) text-left font-Secondary">A Webflow template built for agencies and creative professionals</p>
+                                <p className = "text-b002 text-(--C300) text-left font-Secondary">{footer?.desc_line_1}</p>
                             </div>
                             <div className = "w-[100%] px-(--main-padding) relative border-b-[1px] border-(--C200)">
-                                <p className = "text-b002 text-(--C300) text-left font-Secondary">who value editorial structure and refined motion.</p>
+                                <p className = "text-b002 text-(--C300) text-left font-Secondary">{footer?.desc_line_2}</p>
                             </div>
                         </div>
 
@@ -31,7 +40,7 @@ export default function Footer(){
                             {/* Footer form */}
 
                             <div className = "flex flex-col items-stretch justify-start gap-[16px]">
-                                <h6 className = "text-(--C300)">Feel free to Talk with Us!</h6>
+                                <h6 className = "text-(--C300)">{footer?.form_heading}</h6>
                                 <div>
                                     <div className = "flex flex-row items-stretch justify-start">
                                         <input className = "border-y-[1px] border-(--C200) border-r-[1px] w-[263px] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="First Name" ></input>
@@ -60,11 +69,11 @@ export default function Footer(){
                         
                         <div className = "flex flex-row items-stretch justify-start gap-[120px] perspective-[1000px] perspective-origin-[50%_50%]">
                             <div className = "pt-[80px]">
-                                <img src="/images/Vector.svg" alt="Logo" className = "w-[72px] h-[80px]"/>
+                                <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
                             </div>
-                            <img src="/images/Character.svg" alt="character" className = "w-[376px] h-[510px] object-cover"/>
+                            <img src={footer?.character_url} alt="character" className = "w-[376px] h-[510px] object-cover"/>
                             <div className = "pt-[80px] flex flex-col items-end justify-end pb-[120px]">
-                                <img src="/images/Vector.svg" alt="Logo" className = "w-[72px] h-[80px]"/>
+                                <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
                             </div>
                         </div>
 
@@ -112,12 +121,12 @@ export default function Footer(){
                                     <img src="/images/ig.svg" alt="instagram" className = "w-[24px] h-[24px]" />
                                 </div>
                             </div>
-                            <p className = "text-b003 text-(--C200) font-Secondary">© 2026 Quint Template. All Rights Reserved.</p>
+                            <p className = "text-b003 text-(--C200) font-Secondary">{footer?.copyright}</p>
                         </div>
 
                         <div className = "absolute top-auto left-[24px] bottom-[24px] right-auto">
-                        <p className = "text-b003 text-(--C300) font-Secondary">Designed By <span className = "underline">8AM design</span></p>
-                        <p className = "text-b003 text-(--C300) font-Secondary underline">hello@8am.design</p>
+                        <p className = "text-b003 text-(--C300) font-Secondary">Designed By <span className = "underline">{footer?.credit_name}</span></p>
+                        <p className = "text-b003 text-(--C300) font-Secondary underline">{footer?.credit_email}</p>
                         </div>
                     </div>
 

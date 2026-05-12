@@ -1,4 +1,27 @@
-export default function Cta(){
+import { supabase } from "@/lib/supabase/client";
+
+export default async function Cta(){
+
+    const { data: cta_content } = await supabase 
+        .from("cta_content")
+        .select("*")
+        .single();
+
+    const { data: cta_image }= await supabase
+        .from("cta_images")
+        .select("*")
+        .order("order_index");
+
+    const ctaImageStyles = [
+    "w-[321px] h-[181px] object-cover absolute z-[1] top-auto bottom-[-5%] left-auto right-[12%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[15deg]",   // hero_01
+    "w-[350px] h-[250px] object-cover absolute z-[4] top-auto bottom-[11%] left-[16%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[65deg]",  // hero_02
+    "w-[260px] h-[340px] object-cover absolute z-[auto] top-auto bottom-[21%] left-auto right-[33%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[-40deg]",  // hero_03
+    "w-[350px] h-[250px] object-cover absolute z-[3] top-[34%] bottom-auto left-[19%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[55deg]",      // hero_04
+    "w-[250px] h-[260px] object-cover absolute z-[2] top-[9%] bottom-auto left-[28%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[30deg]",
+    "w-[324px] h-[182px] object-cover absolute z-[auto] top-[19%] bottom-auto left-auto right-[16%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[-30deg]",
+    "w-[180px] h-[240px] object-cover absolute z-[1] top-[-6%] bottom-auto left-[46%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[40deg]"
+  ];
+
     return(
         <section className = "px-(--main-padding)">
             <div className = "mx-auto w-[100%] h-[300vh] relative">
@@ -18,7 +41,7 @@ export default function Cta(){
 
                         <div className = "flex flex-col items-stretch justify-between pb-[64px] h-[100vh] relative z-[2]">
                             <div className = "flex flex-col items-center justify-center h-[100%]">
-                                <span className = "text-d002 font-Primary text-(--C100) text-center">Launch Your Project <br/> With Precision.</span>
+                                <span className = "text-d002 font-Primary text-(--C100) text-center">{cta_content?.headline}<br/>{cta_content?.cta_text}</span>
                             </div>
 
                             {/* Progress Bar */}
@@ -61,13 +84,9 @@ export default function Cta(){
                             {/* CTA Images */}
                             <div className = "hidden flex flex-col items-center justify-end w-[100%] h-[100%] overflow-hidden absolute z-[2] top-0 bottom-0 left-0 right-0">
                                 <div className = "w-[100%] h-[120vh] relative">
-                                    <img src="/cta/cta02.png" alt="cta image" className = "w-[321px] h-[181px] object-cover absolute z-[1] top-auto bottom-[-5%] left-auto right-[12%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[15deg]"/>
-                                    <img src="/cta/cta04.png" alt="cta image" className = "w-[350px] h-[250px] object-cover absolute z-[4] top-auto bottom-[11%] left-[16%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[65deg]"/>
-                                    <img src="/cta/cta03.png" alt="cta image" className = "w-[260px] h-[340px] object-cover absolute z-[auto] top-auto bottom-[21%] left-auto right-[33%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[-40deg]"/>
-                                    <img src="/cta/cta05.png" alt="cta image" className = "w-[350px] h-[250px] object-cover absolute z-[3] top-[34%] bottom-auto left-[19%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[55deg]"/>
-                                    <img src="/cta/cta06.png" alt="cta image" className = "w-[250px] h-[260px] object-cover absolute z-[2] top-[9%] bottom-auto left-[28%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[30deg]"/>
-                                    <img src="/cta/cta01.png" alt="cta image" className = "w-[324px] h-[182px] object-cover absolute z-[auto] top-[19%] bottom-auto left-auto right-[16%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[-30deg]"/>
-                                    <img src="/cta/cta07.png" alt="cta image" className = "w-[180px] h-[240px] object-cover absolute z-[1] top-[-6%] bottom-auto left-[46%] right-auto shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[40deg]"/>
+                                    {cta_image?.map((item) => (
+                                        <img key={item.id} src={item.image_url} alt="cta image" className={`${ctaImageStyles[item.order_index - 1]}`}/>
+                                    ))}
                                 </div>
                             </div>
                         </div>

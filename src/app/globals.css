@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 972px) {
     :root {
 
     /* TYPOGRAPHY */
@@ -107,14 +107,14 @@
     --navlink: 40px;
 
     /* Display text */
-    --D01: 80px;
-    --D02: 60px;
+    --D01: 140px;
+    --D02: 96px;
     --D03: 24px;
 
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 756px) {
     :root {
 
     /* TYPOGRAPHY */
@@ -160,12 +160,12 @@
   --font-Secondary: var(--font-Body);
 
   /* Heading */
-  --h001: var(--h01);
-  --h002: var(--h02);
-  --h003: var(--h03);
-  --h004: var(--h04);
-  --h005: var(--h05);
-  --h006: var(--h06);
+  --text-h001: var(--h01);
+  --text-h002: var(--h02);
+  --text-h003: var(--h03);
+  --text-h004: var(--h04);
+  --text-h005: var(--h05);
+  --text-h006: var(--h06);
 
   /* Body text */
   --text-b001: var(--b01);
@@ -211,49 +211,49 @@ body {
 
 h1 {
   font-family: var(--font-Primary);
-  font-size: var(--h001);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h001);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 
 h2 {
   font-family: var(--font-Primary);
-  font-size: var(--h002);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h002);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 
 h3 {
   font-family: var(--font-Primary);
-  font-size: var(--h003);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h003);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 
 h4 {
   font-family: var(--font-Primary);
-  font-size: var(--h004);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h004);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 
 h5 {
   font-family: var(--font-Primary);
-  font-size: var(--h005);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h005);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 
 h6 {
   font-family: var(--font-Primary);
-  font-size: var(--h006);
-  line-height: var(--lh02);
-  Letter-spacing: var(--ls02);
+  font-size: var(--text-h006);
+  line-height: var(--leading-lh02);
+  Letter-spacing: var(--tracking-ls02);
   font-weight: var(--normal);
 }
 

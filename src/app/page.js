@@ -2,10 +2,75 @@ import Image from "next/image";
 import Projects from "./components/projects/Projects";
 import Service from "./components/service/service";
 import Testimonial from "./components/testimoni/Testimonial";
+import { supabase } from "@/lib/supabase/client";
 
-export default function Home() {
+export default async function Home() {
+
+  const { data: heroContent } = await supabase
+    .from("hero_content")
+    .select("*")
+    .single();
+
+   const { data: heroMeta } = await supabase
+    .from("hero_meta")
+    .select("*")
+    .order("order_index");
+
+  // Fetch hero images
+  const { data: heroImages } = await supabase
+    .from("hero_images")
+    .select("*")
+    .order("order_index");
+
+  const { data: about } = await supabase
+    .from("about_content")
+    .select("*")
+    .single();
+
+  const { data: projectOvw } = await supabase 
+    .from("project_overview")
+    .select("*")
+    .single();
+
+  const { data: project } = await supabase 
+    .from("projects")
+    .select("*")
+    .order("order_index");
+
+  const { data: service_header } = await supabase 
+    .from("services_header")
+    .select("*")
+    .single();
+
+  const { data: service } = await supabase 
+    .from("service")
+    .select("*")
+    .order("order_index");
+
+  const { data: testimonials } = await supabase
+    .from("testimonials")
+    .select("*")
+    .order("order_index");
+
+  const imageStyles = [
+    "w-[604px] h-[340px] object-cover absolute z-[1] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[32deg]",   // hero_01
+    "w-[604px] h-[340px] object-cover absolute z-[2] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-14deg]",  // hero_02
+    "w-[604px] h-[340px] object-cover absolute z-[3] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-24deg] translate-x-[34px] translate-y-[43px]",                                          // hero_03
+    "w-[604px] h-[340px] object-cover absolute z-[4] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[28deg] translate-x-[20px] translate-y-[20px]",                                           // hero_04
+  ];
+
+  const wrapperStyles = [
+  "flex-row items-stretch justify-start pl-[40px]",
+  "flex-row items-stretch justify-start pl-[223px] pt-[178px]",
+  "flex-row items-stretch justify-start pl-[223px] pt-[178px]",
+  "flex-row items-center justify-end pr-[222px]",
+];
+
+  const isAbsolute = [false, true, false, false];
+
+    
   return (
-    <>
+    <main>
 
     {/* Hero section */}
 
@@ -20,20 +85,20 @@ export default function Home() {
           {/* hero 01 */}
 
           <div className = "w-full flex flex-col item-center justify-center ">
-            <span className="text-d001 w-auto text-center leading-[1.2em]">Structed</span>
+            <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">{heroContent?.headline_top}</span>
             <div className = "w-full h-[2px] bg-(--C200)"></div>
           </div>
 
           {/* Hero 02 */}
 
           <div className = "w-full flex flex-col item-center justify-center ">
-            <span className="text-d001 w-auto text-center leading-[1.2em]">Expression</span>
+            <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">{heroContent?.headline_bottom}</span>
             <div className = "w-full h-[2px] bg-(--C200)"></div>
           </div>
 
           {/* Hero button */}
 
-          <div className = "w-full h-full flex flex-col items-center justify-center absolute z-33">
+          <div className = "w-full h-full flex flex-col items-center justify-center lg:absolute md:static static z-[33] md:pt-[43px] lg:pt-0 pt-[87px]">
                 <div className = "w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
                   <div className = "w-[32px] h-[32px] rounded-full py-[4px] px-[8px] bg-(--C300) cursor-pointer flex flex-row items-center">
                     <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px]"/>
@@ -55,46 +120,29 @@ export default function Home() {
 
             <div className = "w-[100%] flex flex-col items-stretch justify-center gap-[8px]">
               
-              <div className = "w-full flex flex-col items-stretch justify-between ">
-                <div className = "w-full px-[240px] flex flex-row items-stretch justify-between ">
-                  <p className = "text-(--C100) font-Secondary w-auto text-center">Our Capabilities</p>
-                  <p className = "text-(--C100) font-Secondary  w-auto text-center">Global Clients</p>
+              {heroMeta?.map((item) => (
+                <div className = "w-full flex flex-col items-stretch justify-between" key={item.id}>
+                    <div className = "w-full lg:px-[240px] md:px-(--main-padding) px-(--main-padding) flex flex-row items-stretch justify-between ">
+                      <p className = {`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>{item.capability}</p>
+                      <p className = {`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>{item.client_text}</p>
+                    </div>
+                  <div className = "w-full h-[1px] bg-(--C200)"></div>
                 </div>
-                <div className = "w-full h-[1px] bg-(--C200)"></div>
-              </div>
-
-              <div className = "w-full flex flex-col items-stretch justify-between ">
-                <div className = "w-full px-[240px] flex flex-row items-stretch justify-between ">
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">Brand Identity</p>
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">Quint is a design studio</p>
-                </div>
-                <div className = "w-full h-[1px] bg-(--C200)"></div>
-              </div>
-
-              <div className = "w-full flex flex-col items-stretch justify-between ">
-                <div className = "w-full px-[240px] flex flex-row items-stretch justify-between ">
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">Presentation Design</p>
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">crafting brand identity</p>
-                </div>
-                <div className = "w-full h-[1px] bg-(--C200)"></div>
-              </div>
-
-              <div className = "w-full flex flex-col items-stretch justify-between ">
-                <div className = "w-full px-[240px] flex flex-row items-stretch justify-between ">
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">Magazine</p>
-                  <p className = "text-(--C100) font-Secondary w-auto text-center opacity-[60%]">and presentation</p>
-                </div>
-                <div className = "w-full h-[1px] bg-(--C200)"></div>
-              </div>
+              ))}
+              
             </div>
           </div>
 
           {/* Hero image */}
-          <div className = "hidden flex flex-row items-center justify-center overflow-hidden absolute z-[10] top-0 bottom-0 right-0 left-0 ">
-            <img src="images/hero_04.png" alt="hero images 4" className="w-[604px] h-[340px] object-cover absolute z-[1] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[32deg]" />
-            <img src="images/hero_03.png" alt="hero images 3" className="w-[604px] h-[340px] object-cover absolute z-[2] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-14deg]" />
-            <img src="images/hero_02.png" alt="hero images 2" className="w-[604px] h-[340px] object-cover absolute z-[3] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[-24deg] translate-x-[34px] translate-y-[43px]" />
-            <img src="images/hero_01.png" alt="hero images 1" className="w-[604px] h-[340px] object-cover absolute z-[4] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[28deg] translate-x-[20px] translate-y-[20px]" />
+          <div className=" hidden flex flex-row items-center justify-center overflow-hidden absolute z-[10] top-0 bottom-0 right-0 left-0">
+            {heroImages?.map((item) => (
+              <img
+                key={item.id}
+                src={item.image_url}
+                alt={`hero image ${item.order_index}`}
+                className={`w-[604px] h-[340px] object-cover absolute top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] ${imageStyles[item.order_index - 1]}`}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -102,33 +150,33 @@ export default function Home() {
 
     {/* About section */}
 
-    <section className = "w-full px-(--main-padding) h-[100vh] pb-[21px] pt-[50px] bg-(--C100)">
-      <div className = "w-full h-[100vh] flex flex-row items-center justify-center">
+    <section className = "w-full px-(--main-padding) lg:h-[100vh] md:h-auto h-auto pb-[21px] pt-[50px] bg-(--C100)">
+      <div className = "w-full h-[100%] flex flex-row items-center justify-center">
         <div className = "w-full h-[100%] flex flex-col items-stretch justify-center gap-[57px] relative">
           <div className = "w-full h-[100%] flex flex-col items-stretch justify-center gap-[64px] relative">
 
             {/* About top row */}
-            <div className = "flex flex-col items-start justify-center gap-[24px]">
+            <div className = "flex flex-col lg:items-start md:items-start items-center justify-center gap-[24px]">
               <h6 className = "text-(--C300) w-full text-center">Overview</h6>
-              <div className = "w-full flex flex-row items-start justify-center gap-[0px]">
-                <span className = "text-d002 text-(--C300) w-auto text-center">Quint Design Studio</span>
-                <img src= "/images/Vector.svg" alt="logo" className= "w-[72px] h-[72px]"/>
+              <div className = "flex lg:flex-row md:flex-row flex-col lg:items-start md:items-start items-center lg:w-full md:w-full justify-center lg:gap-[0px] md:gap-[0px] gap-[40px]">
+                <span className = "text-d002 text-(--C300) w-auto text-center leading-lh01 tracking-ls02">{about?.title}</span>
+                <img src= {about?.logo_url} alt="logo" className= "lg:w-[72px] md:w-[38px] w-[20px] lg:h-[72px] md:h-[42px] h-[22px]"/>
               </div>
             </div>
 
             {/* About bottom row */}
 
-            <div className = "flex flex-row items-stretch justify-center gap-[140px]">
+            <div className = "flex lg:flex-row md:flex-col flex-col lg:items-stretch md:items-end items-end justify-center lg:gap-[140px] md:gap-[64px] gap-[40px]">
 
-              <div className = "pt-[100px] h-[362px] flex flex-col items-stretch justify-end gap-[32px]">
-                <p className = "text-d003 text-(--C300)">Built for Modern <span className = "text-(--C100) text-d003 bg-(--C400)">Creative Teams.</span></p>
-                <div className = "flex flex-row items-stretch justify-start gap-[20px]">
-                  <p className = "text-b002 text-(--C300) font-Secondary w-[200px] text-justify">Our lookbooks serve as a dialogue between the garment and the environment. Photographed in high-contrast settings, each frame captures the tension between fabric and form, documenting the evolution of the Haus aesthetic.</p>
-                  <p className = "text-b002 text-(--C300) font-Secondary w-[200px] text-justify">high-contrast settings, each frame captures the tension between fabric and form, documenting the evolution of the Haus aesthetic.</p>
+              <div className = "lg:pt-[100px] md:pt-[53px] pt-[0px] h-auto flex flex-col items-stretch justify-end gap-[32px]">
+                <p className = "text-d003 text-(--C300) flex flex-col items-center justify-center lg:block md:block">{about?.headline_regular}<span className = "text-(--C100) text-d003 bg-(--C400)">{about?.headline_highlight}</span></p>
+                <div className = "flex lg:flex-row md:flex-row flex-col items-stretch justify-start gap-[20px]">
+                  <p className = "text-b002 text-(--C300) font-Secondary lg:w-[200px] md:w-[50%] w-[100%] text-justify">{about?.body_text_1}</p>
+                  <p className = "text-b002 text-(--C300) font-Secondary lg:w-[200px] md:w-[50%] w-[100%] text-justify">{about?.body_text_2}</p>
                 </div>
               </div>
 
-              <img src = "/about/about.png" alt="Quint about section" className = "w-[450px] h-[320px] object-cover"/>
+              <img src = {about?.image_url} alt="Quint about section" className = "lg:w-[450px] md:w-[450px] w-[100%] h-[320px] object-cover"/>
             </div>
 
           </div>
@@ -138,113 +186,54 @@ export default function Home() {
 
 
     {/* Project section */}
-    <section className = "w-full h-[100%] bg-(--C100)">
+    <section className = "w-full h-[100%] bg-(--C100)">   
       <div className = "w-[100%] h-[100%] mx-auto">
         <div className = "flex flex-col items-center justify-stretch h-[100%] relative w-[100%]">
 
-          <div className = "flex flex-row items-center justify-center gap-[80px] pt-[91px] pb-[21px] h-[100%]">
+          <div className = "flex lg:flex-row md:flex-row flex-col lg:items-center md:items-start lg:justify-center md:justify-start gap-[80px] pt-[91px] pb-[21px] px-(--main-padding) h-[100%] w-full">
             
             <div className = "flex flex-col items-end justify-start gap-[80px] w-[100%] max-w-[420px]">
-              <p className = "text-d003 font-Primary text-(--C300)">A flexible project showcase built to support visual depth and strategic storytelling. From branding systems to digital products, each case study layout is structured to guide attention through imagery, motion, and concise narrative blocks.</p>
+              <p className = "text-d003 font-Primary text-(--C300)">{projectOvw?.description}</p>
               <div className = "w-[100%] flex flex-row items-end justify-end">
-                <img src= "/images/Vector.svg" alt="about logo" className="w-[72px] h-[80px]" />
+                <img src= {projectOvw?.logo_url} alt="about logo" className="w-[72px] h-[80px]" />
               </div>
             </div>
 
 
-            <div className = "flex flex-row items-center justify-center w-[368px] h-[737px]">
-              <div className = "flex flex-row items-center justify-start w-[283px] h-[700px] overflow-hidden bg-(--C300) rounded-[100%] rotate-[7deg] relative">
-                <div className = "flex flex-row items-end justify-start  w-[900px] rotate-[-7deg] absolute gap-[0px]">
-                  <span className = "text-d002 text(--C100) font-Primary text-right max-w-[470px]">Selected Work</span>
+            <div className = "flex flex-row items-center lg:justify-center md:justify-end justify-end lg:w-[368px] md:w-[100%] w-[100%] lg:h-[737px] md:h-[598px] h-[450px] ">
+              <div className = "flex flex-row items-center justify-start lg:w-[283px] md:w-[283px] w-[157px] lg:h-[700px] md:h-[700px] h-[450px] overflow-hidden bg-(--C300) rounded-[100%] rotate-[7deg] relative">
+                <div className = "flex flex-row items-end justify-end lg:w-[600px] md:w-[400px] rotate-[-7deg] absolute gap-[0px]">
+                  <span className = "text-d002 text(--C100) font-Primary text-left max-w-[470px]">{projectOvw?.section_title}</span>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <Projects 
-            file_name = "Project_001"
-            project_name = "Northbound Journal"
-            project_year = "2026"
-            projects_desc = "A quarterly print journal exploring contemporary culture and visual practice. Quint developed the full editorial system, grid structure, typography hierarchy, and print-ready templates."
-            project_image_01 = "/Project_image/1_1.png"
-            project_file_01_A = "image 1.1"
-            project_file_01_B = "editorial_cover"
-            project_image_02 = "/Project_image/1_2.png"
-            project_file_02_A = "image 1.2"
-            project_file_02_B = "project_02"
-            project_image_03 = "/Project_image/1_3.png"
-            project_file_03_A = "image 1.3"
-            project_file_03_B = "project_01"
-            wedo_01 = "Art Direction"
-            wedo_02 = "Editorial Layout System"
-            wedo_03 = "Print Production Setup"
-            wedo_04 = "Digital Companion Landing"
-            padding_top = "121px"
+          {project?.map((item) => (
+            <Projects 
+            key={item?.id}
+            file_name = {item?.file_name}
+            project_name = {item.project_name}
+            project_year = {item.project_year}
+            projects_desc = {item.projects_desc}
+            project_image_01={item.image_url_01}
+            project_file_01_A={item.file_01_a}
+            project_file_01_B={item.file_01_b}
+            project_image_02={item.image_url_02}
+            project_file_02_A={item.file_02_a}
+            project_file_02_B={item.file_02_b}
+            project_image_03={item.image_url_03}
+            project_file_03_A={item.file_03_a}
+            project_file_03_B={item.file_03_b}
+            wedo_01={item.wedo_01}
+            wedo_02={item.wedo_02}
+            wedo_03={item.wedo_03}
+            wedo_04={item.wedo_04}
+            padding_top = {item.padding_top}
           />
-
-          <Projects 
-            file_name = "Project_002"
-            project_name = "Form & Frame"
-            project_year = "2026"
-            projects_desc = "A modular print template collection designed for emerging designers and studios to build consistent publications."
-            project_image_01 = "/Project_image/2_1.png"
-            project_file_01_A = "image 2.1"
-            project_file_01_B = "magazine_spread"
-            project_image_02 = "/Project_image/2_2.png"
-            project_file_02_A = "image 2.2"
-            project_file_02_B = "campaign_poster"
-            project_image_03 = "/Project_image/2_3.png"
-            project_file_03_A = "image 2.3"
-            project_file_03_B = "product_editorial"
-            wedo_01 = "Template Design"
-            wedo_02 = "Layout System"
-            wedo_03 = "Typography Framework"
-            wedo_04 = "Print Specifications"
-            padding_top = "240px"
-          />
-
-          <Projects 
-            file_name = "Project_003"
-            project_name = "Monolith Rebrand"
-            project_year = "2026"
-            projects_desc = "A complete brand repositioning for a contemporary architecture firm. The system balances restraint and authority through typography-led identity."
-            project_image_01 = "/Project_image/3_1.png"
-            project_file_01_A = "image 3.1"
-            project_file_01_B = "brand_campaign"
-            project_image_02 = "/Project_image/3_2.png"
-            project_file_02_A = "image 3.2"
-            project_file_02_B = "brand_stationery"
-            project_image_03 = "/Project_image/3_3.png"
-            project_file_03_A = "image 3.3"
-            project_file_03_B = "marketing_collateral"
-            wedo_01 = "Brand Strategy"
-            wedo_02 = "Logo System"
-            wedo_03 = "Brand Guidelines"
-            wedo_04 = "Stationery & Presentation"
-            padding_top = "369px"
-          />
-
-          <Projects 
-            file_name = "Project_004"
-            project_name = "Signal Report 01"
-            project_year = "2026"
-            projects_desc = "A long-form visual report meticulously translating complex research findings into an accessible editorial experience designed to bridge the gap between raw information."
-            project_image_01 = "/Project_image/4_1.png"
-            project_file_01_A = "image 4.1"
-            project_file_01_B = "poster_layout"
-            project_image_02 = "/Project_image/4_2.png"
-            project_file_02_A = "image 4.2"
-            project_file_02_B = "editorial_poster"
-            project_image_03 = "/Project_image/4_3.png"
-            project_file_03_A = "image 4.3"
-            project_file_03_B = "campaign_visual"
-            wedo_01 = "Information Architecture"
-            wedo_02 = "Editorial Design"
-            wedo_03 = "Data Visualization"
-            wedo_04 = "Cover & Print Direction"
-            padding_top = "478px"
-          />
+          ))}
+          
 
 
         </div>
@@ -258,45 +247,19 @@ export default function Home() {
 
           <div className = "flex flex-col items-center justify-center gap-[32px]">
             <h6 className = "text-(--C100)">Capabilities</h6>
-            <h2 className = "text-(--C100)">Structured for Services.</h2>
-            <p className = "text-b002 text(--C100) font-Secondary max-w-[400px] w-[400px] text-center">Whether you provide brand strategy, digital design, or creative direction, the system adapts without feeling repetitive.</p>
+            <h2 className = "text-(--C100)">{service_header?.heading}</h2>
+            <p className = "text-b002 text(--C100) font-Secondary max-w-[400px] w-[400px] text-center">{service_header?.description}</p>
           </div>
 
           <div>
-            <Service 
-              service = "Brand Identity System"
-              service_desc = "We build your logo."
-            />
-
-            <Service 
-              service = "Editorial & Publication"
-              service_desc = "Layouts for books or magazines."
-            />
-
-            <Service 
-              service = "Presentation Design"
-              service_desc = "Better slides for pitches."
-            />
-
-            <Service 
-              service = "Design Systems"
-              service_desc = "Rules for your UI."
-            />
-
-            <Service 
-              service = "Rebranding"
-              service_desc = "Giving you a makeover."
-            />
-
-            <Service 
-              service = "Digital Portfolio"
-              service_desc = "Show off your project."
-            />  
-
-            <Service 
-              service = "Landing Page"
-              service_desc = "Sites that get clicks."
-            /> 
+            {service?.map((item) => (
+              <Service 
+                key={item?.id}
+                service = {item?.service}
+                service_desc = {item?.service_desc}
+              />
+            ))}
+            
           </div>
         </div>
       </div>
@@ -316,41 +279,25 @@ export default function Home() {
 
             <div className = "flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px]">
 
-              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[40px] w-[100%] h-auto relative">
-                <Testimonial
-                  testimonial_image = "/testimonial/T01.png"
-                  user_name = "Daniel Hart"
-                  testimoni = "They understand how editorial design should function—structured, elegant, and purposeful. The final result exceeded our expectations in both form and usability."
-                />
-              </div>
-
-              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[223px] pt-[178px] w-[100%] h-auto relative">
-                <div className = "absolute top-[-315px] left-auto bottom-0 right-0">
-                  <Testimonial
-                    testimonial_image = "/testimonial/T02.png"
-                    user_name = "Olivia Wilson"
-                    testimoni = "Working with the team was a seamless experience. Their attention to typography, layout, and storytelling transformed our ideas into a publication that feels both refined and expressive."
-                  />
+              {testimonials?.map((item) => (
+                <div key={item.id} className={`flex ${wrapperStyles[item.order_index - 1]} gap-[30px] w-[100%] h-auto relative`}>
+                  {isAbsolute[item.order_index - 1] ? (
+                    <div className="absolute top-[-315px] left-auto bottom-0 right-0">
+                      <Testimonial
+                        testimonial_image={item.testimonial_image}
+                        user_name={item.user_name}
+                        testimoni={item.testimoni}
+                      />
+                    </div>
+                  ) : (
+                    <Testimonial
+                      testimonial_image={item.testimonial_image}
+                      user_name={item.user_name}
+                      testimoni={item.testimoni}
+                    />
+                  )}
                 </div>
-              </div>
-
-
-              <div className = "flex flex-row items-stretch justify-start gap-[30px] pl-[223px] pt-[178px] w-[100%] h-auto relative">
-                <Testimonial
-                  testimonial_image = "/testimonial/T04.png"
-                  user_name = "Sofia Ramirez"
-                  testimoni = "From concept to final print, every detail was thoughtfully crafted. The balance between visual identity and readability made our content stronger and more engaging."
-                />
-              </div>
-
-              <div className = "flex flex-row items-center justify-end gap-[30px] pr-[222px] w-[100%] h-auto relative">
-                <Testimonial
-                  testimonial_image = "/testimonial/T03.png"
-                  user_name = "Elena Fischer"
-                  testimoni = "Their approach to typography and grid systems created a beautiful rhythm across every page. It's rare to see design that feels this intentional and cohesive."
-                />
-              </div>
-
+              ))}
             </div>
 
 
@@ -372,6 +319,6 @@ export default function Home() {
       </div>
     </section>
 
-    </>
+    </main>
   );
 }
