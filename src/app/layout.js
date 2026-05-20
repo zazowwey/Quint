@@ -1,9 +1,9 @@
 import { Instrument_Serif, Inter} from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
 import Cta from "./components/CTA/cta";
 import Footer from "./components/Footer/Footer";
-import Nav_menu from "./components/Nav_Menu/nav_menu";
+import LayoutClient from "./components/LayoutClient";
+
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-F01",
@@ -23,14 +23,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <Nav_menu />
+
+        <LayoutClient />
 
         {children}
 

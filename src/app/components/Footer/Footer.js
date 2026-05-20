@@ -32,22 +32,22 @@ export default async function Footer(){
 
                         <div className = "flex flex-row items-end justify-start h-[auto]">
 
-                            <div className = "flex flex-col items-end justify-stretch w-[100%]">
+                            <div className = "flex flex-col items-end justify-stretch lg:w-[100%] md:w-[100%] w-[4%]">
                                 <div className = "w-[100%] h-[40px] border-x-[1px] border-t-[1px] border-(--C200)"></div>
                                 <div className = "w-[100%] h-[40px] border-x-[1px] border-y-[1px] border-(--C200)"></div>
                             </div>
 
                             {/* Footer form */}
 
-                            <div className = "flex flex-col items-stretch justify-start gap-[16px]">
+                            <div className = "flex flex-col items-stretch justify-start gap-[16px] lg:w-auto md:w-auto w-[100%]">
                                 <h6 className = "text-(--C300)">{footer?.form_heading}</h6>
-                                <div>
-                                    <div className = "flex flex-row items-stretch justify-start">
-                                        <input className = "border-y-[1px] border-(--C200) border-r-[1px] w-[263px] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="First Name" ></input>
-                                        <input className = "border-y-[1px] border-(--C200) border-r-[1px] w-[263px] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="Last Name" ></input>
+                                <div className ="w-full">
+                                    <div className = "flex flex-row items-stretch justify-start w-[100%]">
+                                        <input className = "border-y-[1px] border-(--C200) border-r-[1px] lg:w-[263px] md:w-[263px] w-[100%] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="First Name" ></input>
+                                        <input className = "border-y-[1px] border-(--C200) border-r-[1px] lgw-[263px] md:w-[263px] w-[100%] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="Last Name" ></input>
                                     </div>
-                                    <div className = "flex flex-row items-stretch justify-start">
-                                        <input className = "border-b-[1px] border-(--C200) border-r-[1px]  h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200) w-[486px]" type="email" placeholder="E-mail" ></input>
+                                    <div className = "flex flex-row items-stretch justify-start w-[100%]">
+                                        <input className = "border-b-[1px] border-(--C200) border-r-[1px]  h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200) lg:w-[486px] md:w-[486px] w-[100%]" type="email" placeholder="E-mail" ></input>
                                         <button className = "bg-(--C300) px-[12.5] py-[14.5] w-[40px] h-[40px] flex flex-row items-center justify-center">
                                             <img src="/images/arrow_cta.svg" alt="submit" className = "w-[100%} h-[100%]" />
                                         </button>
@@ -65,19 +65,19 @@ export default async function Footer(){
 
                     {/* Footer bottom row */}
 
-                    <div className = "flex flex-row items-stretch justify-start gap-[120px] pl-[64px] relative">
+                    <div className = "flex lg:flex-row md:flex-row flex-col items-stretch justify-start lg:gap-[120px] md:gap-0 gap-0 lg:pl-[64px] md:pl-[24px] pl-(--main-padding) lg:pr-0 md:pr-0 pr-(--main-padding) lg:pb-0 md:pb-0 pb-(--main-padding) relative ">
                         
-                        <div className = "flex flex-row items-stretch justify-start gap-[120px] perspective-[1000px] perspective-origin-[50%_50%]">
-                            <div className = "pt-[80px]">
+                        <div className = "flex flex-row items-end lg:justify-start md:justify-start justify-center lg:gap-[120px] md:gap-0 gap-0 perspective-[1000px] perspective-origin-[50%_50%] lg:h-auto md:h-[569px] h-auto">
+                            <div className = "pt-[80px] h-full lg:static md:static hidden">
                                 <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
                             </div>
-                            <img src={footer?.character_url} alt="character" className = "w-[376px] h-[510px] object-cover"/>
-                            <div className = "pt-[80px] flex flex-col items-end justify-end pb-[120px]">
+                            <img src={footer?.character_url} alt="character" className = "lg:w-[376px] md:w-[294px] w-[236px] lg:h-[510px] md:h-[400px] h-[320px] object-cover"/>
+                            <div className = "pt-[80px] flex flex-col items-end justify-end pb-[120px] h-full lg:static md:hidden hidden">
                                 <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
                             </div>
                         </div>
 
-                        <div className = "flex flex-col items-stretch justify-between p-[24px] w-[360px] h-[400px] absolute top-auto left-auto right-[24px] bottom-[24px] bg-(--C300)">
+                        <div className = "flex flex-col items-stretch justify-between p-[24px] lg:w-[360px] md:w-[240px] w-[100%] h-[400px] lg:absolute md:absolute static top-auto left-auto right-[24px] bottom-[24px] bg-(--C300)">
                             <div className = "flex flex-col items-stretch justify-start gap-[32px]">
                                 <div className = "flex flex-col items-stretch justify-start gap-[4px]">
                                     <div className = "pb-[4px] border-b-[1px] border-(--C200) cursor-pointer">

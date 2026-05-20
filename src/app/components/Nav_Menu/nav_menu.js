@@ -1,6 +1,8 @@
-export default function Nav_menu () {
+"use client";
+
+export default function Nav_menu ({ isOpen, setIsOpen }) {
     return(
-        <div className = "hidden flex flex-row items-stretch justify-start w-full h-[100vh] pt-[80px] px-(--main-padding) overflow-hidden fixed top-0 bottom-0 left-0 right-0 z-[44] bg-(--C300)">
+        <div className = {`${isOpen ? "flex" : "hidden"} flex-row items-stretch justify-start w-full h-[100vh] pt-[80px] px-(--main-padding) overflow-hidden fixed top-0 bottom-0 left-0 right-0 z-[44] bg-(--C300)`}>
             {/* Nav Menu BG */}
             <div className = "flex flex-row items-stretch justify-between w-[100%] h-[100%] relative z-[1]">
                 <div className = "lg:block md:block hidden w-[1px] h-[100%] bg-(--C200)"></div>

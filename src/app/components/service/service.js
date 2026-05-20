@@ -19,7 +19,7 @@ export default async function Service({service, service_desc}){
                 <div className = "w-[100%] lg:h-[200px] md:h-auto h-auto overflow-hidden">
                     <div className = "flex flex-row items-start justify-stretch gap-[20px]">
                         {service_images?.map((item)=>(
-                        <img src={item?.image_url} alt="service" className="lg:w-[284px] md:w-[284px] w-[150px] lg:h-[200px] md:h-[200px] h-[100px] object-cover" />
+                        <img key={item?.id} src={item?.image_url} alt="service" className="lg:w-[284px] md:w-[284px] w-[150px] lg:h-[200px] md:h-[200px] h-[100px] object-cover" />
                         ))}
                     </div>
                 </div>

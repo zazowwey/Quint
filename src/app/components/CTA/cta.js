@@ -29,12 +29,12 @@ export default async function Cta(){
                     <div className = "relative">
 
                         <div className = "w-[100%] flex flex-row items-stretch justify-between h-[100%] absolute z-[1] top-0 left-0 right-0 bottom-0 border-l-[1px] border-r-[1px] border-(--C200)">
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+                            <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none "></div>
                             <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
                             <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
                         </div>

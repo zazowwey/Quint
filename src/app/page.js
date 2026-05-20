@@ -43,7 +43,7 @@ export default async function Home() {
     .single();
 
   const { data: service } = await supabase 
-    .from("service")
+    .from("services")
     .select("*")
     .order("order_index");
 
@@ -60,10 +60,10 @@ export default async function Home() {
   ];
 
   const wrapperStyles = [
-  "flex-row items-stretch justify-start pl-[40px]",
-  "flex-row items-stretch justify-start pl-[223px] pt-[178px]",
-  "flex-row items-stretch justify-start pl-[223px] pt-[178px]",
-  "flex-row items-center justify-end pr-[222px]",
+  "flex-row items-center justify-start lg:pl-[40px] md:pl-[40px] pl-0",
+  "flex-row items-center lg:justify-start md:justify-end justify-center lg:pl-[223px] md:pl-0 pl-0 lg:pt-[178px] md:pt-0 pt-0 lg:pr-0 md:pr-[30px] pr-0",
+  "flex-row items-center lg:justify-start md:justify-start justify-start lg:pl-[223px] md:pl-[120px] pl-0 lg:pt-[178px] md:pt-0 pt-0",
+  "flex-row items-center justify-end lg:pr-[222px] md:pr-0 pr-0",
 ];
 
   const isAbsolute = [false, true, false, false];
@@ -248,7 +248,7 @@ export default async function Home() {
           <div className = "flex flex-col items-center justify-center gap-[32px]">
             <h6 className = "text-(--C100)">Capabilities</h6>
             <h2 className = "text-(--C100)">{service_header?.heading}</h2>
-            <p className = "text-b002 text(--C100) font-Secondary max-w-[400px] w-[400px] text-center">{service_header?.description}</p>
+            <p className = "text-b002 text-(--C100) font-Secondary max-w-[400px] w-[400px] text-center">{service_header?.description}</p>
           </div>
 
           <div>
@@ -258,9 +258,9 @@ export default async function Home() {
                 service = {item?.service}
                 service_desc = {item?.service_desc}
               />
-            ))}
-            
+            ))}  
           </div>
+          
         </div>
       </div>
     </section>
@@ -282,7 +282,7 @@ export default async function Home() {
               {testimonials?.map((item) => (
                 <div key={item.id} className={`flex ${wrapperStyles[item.order_index - 1]} gap-[30px] w-[100%] h-auto relative`}>
                   {isAbsolute[item.order_index - 1] ? (
-                    <div className="absolute top-[-315px] left-auto bottom-0 right-0">
+                    <div className="lg:absolute md:static static lg:top-[-315px] md:top-0 top-0 lg:left-auto md:left-0 left-0 bottom-0 right-0">
                       <Testimonial
                         testimonial_image={item.testimonial_image}
                         user_name={item.user_name}
@@ -305,12 +305,12 @@ export default async function Home() {
           </div>
 
            <div className = "w-[100%] flex flex-row items-stretch justify-between h-[100%] absolute z-[1] top-0 left-0 right-0 bottom-0 border-l-[1px] border-r-[1px] border-(--C200)">
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
-              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none lg:block md:block hidden"></div>
+              <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none "></div>
               <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
               <div className = "w-[1px] h-[100%] bg-(--C200) pointer-events-none"></div>
             </div>
