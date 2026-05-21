@@ -5,10 +5,10 @@ import Primary from "./Primary_button/Primary";
 export default function Navbar({ isMenuOpen, setIsMenuOpen }){
 
     return(
-        <nav className = "w-full h-auto bg-transparent fixed z-[999] top-0 bottom-auto right-0 left-0 backdrop-blur-md mix-blend-difference">
+        <nav style={{ opacity: 0, animationName: "slideDown", animationDuration: "1.2s", animationTimingFunction: "ease-out", animationFillMode: "forwards", animationDelay: "3.1s" }} className = "w-full h-auto bg-transparent fixed z-[999] top-0 bottom-auto right-0 left-0 backdrop-blur-md mix-blend-difference">
             <div className = "w-full h-full px-auto">
-                <div className = "w-full h-full flex flex-col items-center justify-between relative">
-                    <div className = "w-full h-full flex flex-row items-center justify-between py-[20px] px-(--main-padding) border-b border-solid border-(--C500)">
+                <div className = "w-full h-full flex flex-col items-center justify-between">
+                    <div className = "w-full h-full flex flex-row items-center justify-between py-[20px] px-(--main-padding) border-b border-solid border-(--C500) relative">
                         
                         {/* Nav left col */}
                          <div className = "lg:w-[50%] md:w-auto w-auto h-[40px] flex flex-row items-center justify-start gap-[83px]">
@@ -63,15 +63,17 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }){
                             
                         </div>
 
-                        {/* Menu wrapper */}
-                        <div className ="lg:w-full md:w-auto sm:w-auto h-full lg:absolute md:static sm:static gap-[10px] px-[16px] z-[2]"  onClick={() => setIsMenuOpen(!isMenuOpen)} >
-                            <div className = "flex flex-col items-center justify-center h-full px-[16px] relative cursor-pointer gap-[6px]">
-                                <div className = "w-[32px] h-[2px] bg-white rounded-full"></div>
-                                <div className = "w-[32px] h-[2px] bg-white rounded-full "></div>
-                            </div>
-                        </div>
-
                     </div>
+                    {/* Menu wrapper */}
+                    <div className ="lg:w-[100%] md:w-auto sm:w-auto h-full lg:absolute md:static sm:static gap-[10px] px-(--main-padding) z-[2]"  onClick={() => setIsMenuOpen(!isMenuOpen)} >
+                        <div className = "flex flex-col items-center justify-center h-full w-full px-[16px] relative cursor-pointer gap-[6px]">
+                            <div className = "w-[32px] h-[2px] bg-white rounded-full"></div>
+                            <div className = "w-[32px] h-[2px] bg-white rounded-full "></div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </nav>

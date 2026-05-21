@@ -83,23 +83,34 @@ export default async function Home() {
           <div className = "w-full flex flex-col items-start justify-stretch relative">
 
           {/* hero 01 */}
+            <div className="w-full flex flex-col item-center justify-center">
+              <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
+                {heroContent?.headline_top?.split("").map((char, i) => (
+                  <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${1.7 + i * 0.08}s` }}>
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </span>
+              <div style={{ width: 0, height: "2px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: "0s" }} className="bg-(--C200)"></div>
+            </div>
 
-          <div className = "w-full flex flex-col item-center justify-center ">
-            <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">{heroContent?.headline_top}</span>
-            <div className = "w-full h-[2px] bg-(--C200)"></div>
-          </div>
+          {/* hero 02 */}
 
-          {/* Hero 02 */}
-
-          <div className = "w-full flex flex-col item-center justify-center ">
-            <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">{heroContent?.headline_bottom}</span>
-            <div className = "w-full h-[2px] bg-(--C200)"></div>
-          </div>
+            <div className="w-full flex flex-col item-center justify-center">
+              <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
+                {heroContent?.headline_bottom?.split("").map((char, i) => (
+                  <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${1.75 + i * 0.08}s` }}>
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </span>
+              <div style={{ width: 0, height: "2px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: "0.05s" }} className="bg-(--C200)"></div>
+            </div>
 
           {/* Hero button */}
 
           <div className = "w-full h-full flex flex-col items-center justify-center lg:absolute md:static static z-[33] md:pt-[43px] lg:pt-0 pt-[87px]">
-                <div className = "w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
+                <div style={{ opacity: 0, animationName: "scaleReveal", animationDuration: "0.8s", animationTimingFunction: "ease-out", animationFillMode: "forwards", animationDelay: "2.2s" }} className = "w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
                   <div className = "w-[32px] h-[32px] rounded-full py-[4px] px-[8px] bg-(--C300) cursor-pointer flex flex-row items-center">
                     <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px]"/>
                   </div>    
@@ -114,22 +125,40 @@ export default async function Home() {
           {/* Hero bottom row */}
 
           <div className = "flex flex-col items-start justify-center gap-[56px] w-full h-auto">
-            <p className = "text-(--C100) font-Secondary w-full text-center">Scroll for more</p>
+          <p style={{ opacity: 0, animationName: "letterReveal", animationDuration: "0.5s", animationTimingFunction: "ease-out", animationFillMode: "forwards", animationDelay: "2s" }} className="text-(--C100) font-Secondary w-full text-center">Scroll for more</p>
 
           {/* Hero Meta */}
+            <div className="w-[100%] flex flex-col items-stretch justify-center gap-[8px]">
+              
+              {heroMeta?.map((item) => {
+                const lineDelay = 0.1 + item.order_index * 0.05;
+                const textDelay = 1.7 ;
+                return (
+                  <div className="w-full flex flex-col items-stretch justify-between" key={item.id}>
+                    <div className="w-full lg:px-[240px] md:px-(--main-padding) px-(--main-padding) flex flex-row items-stretch justify-between">
+                      
+                      <p className={`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>
+                        {item.capability?.split("").map((char, i) => (
+                          <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${textDelay + i * 0.03}s` }}>
+                            {char === " " ? "\u00A0" : char}
+                          </span>
+                        ))}
+                      </p>
 
-            <div className = "w-[100%] flex flex-col items-stretch justify-center gap-[8px]">
-              
-              {heroMeta?.map((item) => (
-                <div className = "w-full flex flex-col items-stretch justify-between" key={item.id}>
-                    <div className = "w-full lg:px-[240px] md:px-(--main-padding) px-(--main-padding) flex flex-row items-stretch justify-between ">
-                      <p className = {`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>{item.capability}</p>
-                      <p className = {`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>{item.client_text}</p>
-                    </div>
-                  <div className = "w-full h-[1px] bg-(--C200)"></div>
-                </div>
-              ))}
-              
+                      <p className={`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>
+                        {item.client_text?.split("").map((char, i) => (
+                          <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${textDelay + i * 0.03}s` }}>
+                            {char === " " ? "\u00A0" : char}
+                          </span>
+                        ))}
+                      </p>
+
+      </div>
+      <div style={{ width: 0, height: "1px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: `${lineDelay}s` }} className="bg-(--C200)"></div>
+    </div>
+  );
+})}
+
             </div>
           </div>
 

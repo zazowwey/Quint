@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+
+@keyframes letterReveal {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineReveal {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes scaleReveal {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
 :root {
 
   /* Color */
@@ -73,7 +94,7 @@
     /* Button text */
     --bt01: 20px; 
     --bt02: 18px;
-    --navlink: 40px;
+    --navlink: 110px;
 
     /* Display text */
     --D01: 180px;
