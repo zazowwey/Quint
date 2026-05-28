@@ -68,12 +68,12 @@ export default async function Footer(){
                     <div className = "flex lg:flex-row md:flex-row flex-col items-stretch justify-start lg:gap-[120px] md:gap-0 gap-0 lg:pl-[64px] md:pl-[24px] pl-(--main-padding) lg:pr-0 md:pr-0 pr-(--main-padding) lg:pb-0 md:pb-0 pb-(--main-padding) relative ">
                         
                         <div className = "flex flex-row items-end lg:justify-start md:justify-start justify-center lg:gap-[120px] md:gap-0 gap-0 perspective-[1000px] perspective-origin-[50%_50%] lg:h-auto md:h-[569px] h-auto">
-                            <div className = "pt-[80px] h-full lg:static md:static hidden">
+                            <div className = "pt-[80px] h-full lg:block md:block hidden">
                                 <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
                             </div>
                             <img src={footer?.character_url} alt="character" className = "lg:w-[376px] md:w-[294px] w-[236px] lg:h-[510px] md:h-[400px] h-[320px] object-cover"/>
-                            <div className = "pt-[80px] flex flex-col items-end justify-end pb-[120px] h-full lg:static md:hidden hidden">
-                                <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
+                            <div className="pt-[80px] flex flex-col items-start justify-end pb-[120px] h-full lg:flex md:hidden hidden">
+                                <img src={footer?.logo_url} alt="Logo" className="w-[72px] h-[80px]"/>
                             </div>
                         </div>
 
