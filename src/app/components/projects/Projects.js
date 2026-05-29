@@ -2,7 +2,7 @@ import Secondary from "../Secondary_button/Secondary";
 
 export default function Projects({file_name , project_name, project_year, projects_desc, project_image_01, project_file_01_A, project_file_01_B, project_image_02, project_file_02_A, project_file_02_B, project_image_03, project_file_03_A, project_file_03_B, wedo_01, wedo_02, wedo_03, wedo_04, padding_top}){
     return(
-        <div className = " w-full h-[100%] flex flex-row items-start justify-end overflow-hidden"> 
+        <div className = " w-[100vw] h-[100vh] flex flex-row items-start justify-end overflow-hidden"> 
             <div className = "w-full h-[100%] flex lg:flex-row md:flex-col flex-col items-stretch justify-end">
 
                 <div className = "lg:w-[43px] md:w-full w-full lg:h-[126vh] md:h-[41px] h-[41px] border-r-[1px] border-(--C200) lg:[padding-top:var(--pt)] flex flex-row items-start justify-end" style={{ "--pt": padding_top }}>
@@ -40,9 +40,9 @@ export default function Projects({file_name , project_name, project_year, projec
 
                     {/* bottom row */}
 
-                    <div className = "flex lg:flex-row md:flex-col flex-col items-end justify-stretch gap-[64px] w-[100%] relative">
+                    <div className = "flex lg:flex-row md:flex-col flex-col items-end lg:justify-stretch md:justify-stretch justify-stretch gap-[64px] w-[100%] relative">
                         
-                        <div className = "flex flex-row items-end justify-start lg:w-[958px] md:w-[720px] w-[100%] h-[100%] relative">
+                        <div className = "flex flex-row items-end lg:justify-start md:justify-start justify-center lg:w-[958px] md:w-full w-full h-[100%] relative">
                             
                             <div className = "flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[416px] md:h-auto h-auto">
                                 <div className = "flex flex-row items-stretch justify-start gap-[12px]">
@@ -52,7 +52,7 @@ export default function Projects({file_name , project_name, project_year, projec
                                 <img src={project_image_01} alt="Project Image" className = "lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[253px] h-[120px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
                             </div>
 
-                            <div className = "flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[367px] md:h-auto h-auto absolute top-auto lg:left-[298px] md:left-[193px] left-[103px] right-auto bottom-0">
+                            <div className = "flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[367px] md:h-auto h-auto lg:absolute md:absolute static top-auto lg:left-[298px] md:left-[193px] left-[103px] right-auto bottom-0">
                                 <div className = "flex flex-row items-stretch justify-start gap-[12px]">
                                     <p className = "text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_file_02_A}</p>
                                     <p className = "text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_file_02_B}</p>
@@ -61,7 +61,7 @@ export default function Projects({file_name , project_name, project_year, projec
                             </div>
 
 
-                            <div className = "flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[318px] md:h-auto h-auto absolute top-auto lg:left-auto md:left-[386px] left-[182px] lg:right-0 md:right-auto right-auto lg:bottom-0 md:bottom-0 bottom-0">
+                            <div className = "flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[318px] md:h-auto h-auto lg:absolute md:absolute static top-auto lg:left-auto md:left-[386px] left-[182px] lg:right-0 md:right-auto right-auto lg:bottom-0 md:bottom-0 bottom-0">
                                 <div className = "flex flex-row items-stretch justify-start gap-[12px]">
                                     <p className = "text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_file_03_A}</p>
                                     <p className = "text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_file_03_B}</p>
