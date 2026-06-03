@@ -25,28 +25,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}>
+      <body className="flex flex-col">
+        <div className="w-full overflow-x-clip">
+          <LayoutClient />
+          {children}
+        </div>
 
-        <LayoutClient />
-
-        {children}
-
-        <div className="w-[100%] h-auto relative flex flex-col items-stretch justify-start">
-
-          <div className="w-[100%] sticky top-0 left-auto right-auto bottom-0 z-[2]">
+        <div className="w-full h-auto relative flex flex-col items-stretch justify-start">
+          <div className="w-full sticky top-0 z-[2]">
             <Cta />
           </div>
-
-          <div className="block pt-[184px] w-[100%] overflow-hidden relative z-[3]">
-            <div className="w-[100%] h-[100%]">
-              <Footer />
-            </div>
+          <div className="block pt-[184px] w-full overflow-hidden relative z-[3]">
+            <Footer />
           </div>
-
         </div>
       </body>
     </html>

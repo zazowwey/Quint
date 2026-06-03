@@ -21,6 +21,30 @@
   to   { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes loopTicker {
+  from{ transform: translateX(0px);}
+  to {transform: translateX(-1000px);}
+}
+
+@keyframes loopBrand {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-loopTicker {
+  animation: loopTicker 6s linear infinite;
+}
+
+.animate-loopBrand {
+  animation: loopBrand 6s linear infinite;
+}
+
+/* globals.css */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
 
   /* Color */

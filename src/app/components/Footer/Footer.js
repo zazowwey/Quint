@@ -9,7 +9,7 @@ export default async function Footer(){
         .single();
 
     return(
-        <section className = "pt-[120px] overflow-hidden bg-(--C100)">
+        <section className = "pt-[120px] overflow-hidden bg-(--C100) border-2 border-yellow-500">
             <div className = "mx-auto w-[100%]">
                 <div className = "flex flex-col items-stretch justify-start gap-[56px]">
 
@@ -69,11 +69,11 @@ export default async function Footer(){
                         
                         <div className = "flex flex-row items-end lg:justify-start md:justify-start justify-center lg:gap-[120px] md:gap-0 gap-0 perspective-[1000px] perspective-origin-[50%_50%] lg:h-auto md:h-[569px] h-auto">
                             <div className = "pt-[80px] h-full lg:block md:block hidden">
-                                <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px]"/>
+                                <img src={footer?.logo_url} alt="Logo" className = "w-[72px] h-[80px] animate-loopBrand"/>
                             </div>
                             <img src={footer?.character_url} alt="character" className = "lg:w-[376px] md:w-[294px] w-[236px] lg:h-[510px] md:h-[400px] h-[320px] object-cover"/>
                             <div className="pt-[80px] flex flex-col items-start justify-end pb-[120px] h-full lg:flex md:hidden hidden">
-                                <img src={footer?.logo_url} alt="Logo" className="w-[72px] h-[80px]"/>
+                                <img src={footer?.logo_url} alt="Logo" className="w-[72px] h-[80px] animate-loopBrand"/>
                             </div>
                         </div>
 

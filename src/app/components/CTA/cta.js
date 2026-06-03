@@ -23,7 +23,7 @@ export default async function Cta(){
   ];
 
     return(
-        <section className = "px-(--main-padding)">
+        <section className = "px-(--main-padding) h-auto relative ">
             <div className = "mx-auto w-[100%] h-[300vh] relative">
                 <div className = "sticky top-0">
                     <div className = "relative">

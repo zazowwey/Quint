@@ -1,6 +1,10 @@
 "use client";
+import { useState } from "react";
 
 export default function Nav_menu ({ isOpen, setIsOpen }) {
+
+    const [hovered, setHovered] = useState(false);
+
     return(
         <div className = {`${isOpen ? "flex" : "hidden"} flex-row items-stretch justify-start w-full h-[100vh] pt-[80px] px-(--main-padding) overflow-hidden fixed top-0 bottom-0 left-0 right-0 z-[44] bg-(--C300)`}>
             {/* Nav Menu BG */}
@@ -15,7 +19,7 @@ export default function Nav_menu ({ isOpen, setIsOpen }) {
             <div className = "flex flex-row items-stretch justify-between pt-[80px] px-(--main-padding) absolute z-[3] top-0 bottom-0 right-0 left-0">
                 <div className = "flex flex-col items-stretch justify-between py-[40px] px-[12px] w-[35%] h-[100%]">
                     <div className = "flex flex-col items-stretch justify-start gap-[40px] w-[100%]">
-                        <a href="#" className = "text-nav-link text-(--C100) font-Primary leading-lh01 tracking-ls02">Home</a>
+                        <a href="#" className = "text-nav-link font-Primary leading-lh01 tracking-ls02 transition-all duration-500" style={{ color: hovered ? 'blue' : 'white' ,}}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>Home</a>
                         <a href="#" className = "text-nav-link text-(--C100) font-Primary leading-lh01 tracking-ls02">About</a>
                         <a href="#" className = "text-nav-link text-(--C100) font-Primary leading-lh01 tracking-ls02">Works</a>
                         <a href="#" className = "text-nav-link text-(--C100) font-Primary leading-lh01 tracking-ls02">Service</a>

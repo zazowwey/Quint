@@ -16,7 +16,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }){
                             {/* Brand */}
                             <div className = "lg:w-[105px] md:w-[105px] w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-white rounded-full flex items-center justify-start">
                                 <div className = "w-[32px] h-[32px] rounded-full py-[4px] px-[8px] bg-(--C300) cursor-pointer flex flex-row items-center">
-                                    <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px]"/>
+                                    <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px] animate-loopBrand"/>
                                 </div>    
                                 <h6 className ="text-(--C300) absolute right-[16px] blend-difference flex flex-row items-start z-3 italic fw-bold md:block hidden lg:block">
                                     Quint 
@@ -64,7 +64,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }){
                         </div>
 
                         {/* Menu wrapper */}
-                        <div className="lg:w-[100%] md:w-auto w-auto h-full lg:absolute md:static static gap-[10px] px-(--main-padding) z-[2]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <div className=" lg:w-[100%] md:w-auto w-auto h-full lg:absolute md:static static gap-[10px] px-(--main-padding) z-[2]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             <div className = "flex flex-col items-center justify-center h-full w-full px-[16px] relative cursor-pointer gap-[6px]">
                                 <div className = "w-[32px] h-[2px] bg-white rounded-full"></div>
                                 <div className = "w-[32px] h-[2px] bg-white rounded-full "></div>
