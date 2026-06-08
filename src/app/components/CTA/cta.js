@@ -1,16 +1,10 @@
-import { supabase } from "@/lib/supabase/client";
+import { getCTAContent, getCTAImages } from "@/lib/fetch/queries";
 
 export default async function Cta(){
 
-    const { data: cta_content } = await supabase 
-        .from("cta_content")
-        .select("*")
-        .single();
+    const cta_content = await getCTAContent();
+    const cta_image = await getCTAImages();
 
-    const { data: cta_image }= await supabase
-        .from("cta_images")
-        .select("*")
-        .order("order_index");
 
     const ctaImageStyles = [
     "w-[321px] h-[181px] object-cover absolute z-[1] top-auto bottom-[-5%] left-auto right-[12%] shadow-[-8px_-2px_80px_rgba(0,0,0,0.3)] rotate-[15deg]",   // hero_01

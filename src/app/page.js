@@ -1,62 +1,35 @@
-import Image from "next/image";
 import Projects from "./components/projects/Projects";
 import Service from "./components/service/service";
 import Testimonial from "./components/testimoni/Testimonial";
-import { supabase } from "@/lib/supabase/client";
 import Secondary from "./components/Secondary_button/Secondary";
 import AboutScroll from "./components/Interaction/About_Scroll";
+import TestimonialScroll from "./components/Interaction/Testimonial_scroll";
+import HeroAnimation from "./components/Interaction/Hero_load";
+import {
+  getHeroContent,
+  getHeroMeta,
+  getHeroImages,
+  getAboutContent,
+  getProjectOverview,
+  getProjectItems,
+  getServicesHeader,
+  getServices,
+  getServiceImages,
+  getTestimonials,
+} from "@/lib/fetch/queries";
 
 export default async function Home() {
 
-  const { data: heroContent } = await supabase
-    .from("hero_content")
-    .select("*")
-    .single();
-
-  const { data: heroMeta } = await supabase
-    .from("hero_meta")
-    .select("*")
-    .order("order_index");
-
-  const { data: heroImages } = await supabase
-    .from("hero_images")
-    .select("*")
-    .order("order_index");
-
-  const { data: about } = await supabase
-    .from("about_content")
-    .select("*")
-    .single();
-
-  const { data: projectOvw } = await supabase
-    .from("project_overview")
-    .select("*")
-    .single();
-
-  const { data: project } = await supabase
-    .from("projects")
-    .select("*")
-    .order("order_index");
-
-  const { data: service_header } = await supabase
-    .from("services_header")
-    .select("*")
-    .single();
-
-  const { data: service } = await supabase
-    .from("services")
-    .select("*")
-    .order("order_index");
-
-  const { data: service_images } = await supabase
-    .from("service_images")
-    .select("*")
-    .order("order_index");
-
-  const { data: testimonials } = await supabase
-    .from("testimonials")
-    .select("*")
-    .order("order_index");
+  const heroContent = await getHeroContent();
+  const heroMeta = await getHeroMeta();
+  const heroImages = await getHeroImages();
+  const about = await getAboutContent();
+  const projectOvw = await getProjectOverview();
+  const project = await getProjectItems();
+  const service_header = await getServicesHeader();
+  const service = await getServices();
+  const service_images = await getServiceImages();
+  const testimonials = await getTestimonials();
 
   const imageStyles = [
     "w-[604px] h-[340px] object-cover absolute z-[1] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[32deg]",
@@ -72,6 +45,13 @@ export default async function Home() {
     "flex-row items-center justify-end lg:pr-[222px] md:pr-0 pr-0",
   ];
 
+  const project_padding_top = [
+    "121px",
+    "240px",
+    "360px",
+    "478px",
+  ]
+
   const isAbsolute = [false, true, false, false];
 
   const projectCount = project?.length ?? 0;
@@ -79,41 +59,43 @@ export default async function Home() {
   return (
     <main>
 
-      {/* <AboutScroll /> */}
+      <AboutScroll project={project} />
+      <TestimonialScroll testimonials={testimonials} />
+      <HeroAnimation />
 
-      <div className="w-full lg:h-[900vh] h-auto relative">
+      <div className="w-full lg:h-[900vh] h-auto relative" id="hero-about-wrapper">
 
         {/* Hero section */}
-        <section id="hero-section"className="w-full h-[110vh] pb-[21px] lg:sticky static top-0 left-auto right-auto bottom-auto z-[1]">
+        <section id="hero-section"className="w-full h-[200vh] pb-[21px] lg:sticky static top-0 left-auto right-auto bottom-auto z-[1]">
           <div className="w-full h-[100vh] pt-[102px] relative flex flex-row items-center justify-center">
             <div className="w-full flex flex-col items-center justify-center gap-[56px]">
 
               <div className="w-full flex flex-col items-start justify-stretch relative">
 
-                <div className="w-full flex flex-col item-center justify-center">
+                <div className="w-full flex flex-col items-center justify-center relative">
                   <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
                     {heroContent?.headline_top?.split("").map((char, i) => (
-                      <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${1.7 + i * 0.08}s` }}>
+                      <span key={i} className="hero-char-top">
                         {char === " " ? "\u00A0" : char}
                       </span>
                     ))}
                   </span>
-                  <div style={{ width: 0, height: "2px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: "0s" }} className="bg-(--C200)"></div>
+                  <div className="hero-line h-[2px] bg-(--C200) absolute bottom-0 left-0"></div>
                 </div>
 
-                <div className="w-full flex flex-col item-center justify-center">
+                <div className="w-full flex flex-col items-center justify-center">
                   <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
                     {heroContent?.headline_bottom?.split("").map((char, i) => (
-                      <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${1.75 + i * 0.08}s` }}>
+                      <span key={i} className="hero-char-bottom">
                         {char === " " ? "\u00A0" : char}
                       </span>
                     ))}
                   </span>
-                  <div style={{ width: 0, height: "2px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: "0.05s" }} className="bg-(--C200)"></div>
+                  <div className="hero-line h-[2px] bg-(--C200) absolute bottom-0 left-0"></div>
                 </div>
 
                 <div className="w-full h-full flex flex-col items-center justify-center lg:absolute md:static static z-[33] md:pt-[43px] lg:pt-0 pt-[87px]">
-                  <div style={{ opacity: 0, animationName: "scaleReveal", animationDuration: "0.8s", animationTimingFunction: "ease-out", animationFillMode: "forwards", animationDelay: "2.2s" }} className="w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
+                  <div className="hero-badge w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
                     <div className="w-[32px] h-[32px] rounded-full py-[4px] px-[8px] bg-(--C300) cursor-pointer flex flex-row items-center">
                       <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px] animate-loopBrand" />
                     </div>
@@ -126,31 +108,31 @@ export default async function Home() {
               </div>
 
               <div className="flex flex-col items-start justify-center gap-[56px] w-full h-auto">
-                <p style={{ opacity: 0, animationName: "letterReveal", animationDuration: "0.5s", animationTimingFunction: "ease-out", animationFillMode: "forwards", animationDelay: "2s" }} className="text-(--C100) font-Secondary w-full text-center">Scroll for more</p>
+                <p className="hero-scroll-text text-(--C100) font-Secondary w-full text-center">
+                  Scroll for more
+                </p>
 
                 <div className="w-full flex flex-col items-stretch justify-center gap-[8px]">
                   {heroMeta?.map((item) => {
-                    const lineDelay = 0.1 + item.order_index * 0.05;
-                    const textDelay = 1.7;
                     return (
                       <div className="w-full flex flex-col items-stretch justify-between" key={item.id}>
                         <div className="w-full lg:px-[240px] md:px-(--main-padding) px-(--main-padding) flex flex-row items-stretch justify-between">
                           <p className={`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>
                             {item.capability?.split("").map((char, i) => (
-                              <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${textDelay + i * 0.03}s` }}>
+                              <span key={i} className="hero-meta-char">
                                 {char === " " ? "\u00A0" : char}
                               </span>
                             ))}
                           </p>
                           <p className={`${item.order_index === 1 ? "text-(--C100)" : "text-(--C100)/60"} font-Secondary w-auto text-center`}>
                             {item.client_text?.split("").map((char, i) => (
-                              <span key={i} style={{ display: "inline-block", opacity: 0, animation: "letterReveal 0.8s ease-out forwards", animationDelay: `${textDelay + i * 0.03}s` }}>
+                              <span key={i} className="hero-meta-char">
                                 {char === " " ? "\u00A0" : char}
                               </span>
                             ))}
                           </p>
                         </div>
-                        <div style={{ width: 0, height: "1px", animation: "lineReveal 1.7s ease-out forwards", animationDelay: `${lineDelay}s` }} className="bg-(--C200)"></div>
+                        <div className="hero-meta-line h-[1px] bg-(--C200)"></div>
                       </div>
                     );
                   })}
@@ -173,9 +155,9 @@ export default async function Home() {
         </section>
 
         {/* About + Project section */}
-        <div className="flex flex-col items-start justify-start w-full lg:h-[100vh] h-auto lg:overflow-hidden lg:sticky static top-0 left-auto right-auto bottom-auto z-[2]">
+        <div id="horizontal-move" className="flex flex-col items-start justify-start w-full lg:h-[100vh] h-auto lg:overflow-hidden lg:sticky static top-0 left-auto right-auto bottom-auto z-[2]" >
           <div className="flex flex-col items-start justify-start gap-0 w-full lg:h-full h-auto lg:overflow-hidden">
-            <div className="grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-1 grid-rows-[auto_auto] lg:items-stretch items-start lg:justify-stretch justify-start gap-0 lg:h-full h-auto lg:w-[200vw] w-full">
+            <div id="horizontal-move-wrapper"className="grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-1 grid-rows-[auto_auto] lg:items-stretch items-start lg:justify-stretch justify-start gap-0 lg:h-full h-auto lg:w-[200vw] w-full">
 
               {/* About section */}
               <section id="about-section" className="w-full lg:w-[100vw] px-(--main-padding) lg:h-[100vh] h-auto pb-[21px] pt-[50px] bg-(--C100)"  style={{ transformOrigin: 'center bottom' }}>
@@ -230,7 +212,7 @@ export default async function Home() {
                       <div className="flex flex-row items-center lg:justify-center md:justify-end justify-end lg:w-[368px] md:w-full w-full lg:h-[737px] md:h-[598px] h-[450px]">
                         <div className="flex flex-row items-center justify-start lg:w-[283px] md:w-[283px] w-[157px] lg:h-[700px] md:h-[700px] h-[450px] lg:overflow-hidden bg-(--C300) rounded-[100%] rotate-[7deg] relative">
                           <div className="flex flex-row items-end justify-end lg:w-[600px] md:w-[400px] rotate-[-7deg] absolute gap-[0px]">
-                            <span className="text-d002 text(--C100) font-Primary text-left max-w-[470px]">{projectOvw?.section_title}</span>
+                            <span className="text-d002 text(--C100) font-Primary text-left max-w-[470px]" id="dm-project">{projectOvw?.section_title}</span>
                           </div>
                         </div>
                       </div>
@@ -243,6 +225,7 @@ export default async function Home() {
                           {project?.map((item) => (
                             <div
                               key={item.id}
+                              id={`work-item-${item.order_index}`}
                               className="w-[3%] h-full overflow-hidden absolute top-0 bottom-0 lg:flex hidden flex-row items-start justify-start"
                               style={{ zIndex: item.order_index }}
                             >
@@ -265,7 +248,7 @@ export default async function Home() {
                                   wedo_02={item.wedo_02}
                                   wedo_03={item.wedo_03}
                                   wedo_04={item.wedo_04}
-                                  padding_top={item.padding_top}
+                                  padding_top={project_padding_top[item.order_index - 1]}
                                 />
                               </div>
                             </div>
@@ -281,6 +264,7 @@ export default async function Home() {
                     >
                       {project?.map((item) => (
                         <div
+                          id={`work-item-${item.order_index}`}
                           key={item.id}
                           className="w-full sticky top-0"
                           style={{ zIndex: item.order_index }}
@@ -303,7 +287,7 @@ export default async function Home() {
                             wedo_02={item.wedo_02}
                             wedo_03={item.wedo_03}
                             wedo_04={item.wedo_04}
-                            padding_top={item.padding_top}
+                            padding_top={project_padding_top[item.order_index - 1]}
                           />
                         </div>
                       ))}
@@ -354,7 +338,7 @@ export default async function Home() {
 
               <div className="flex flex-col items-center justify-center">
                 <h6 className="text-(--C100)">Written</h6>
-                <h2 className="text-(--C100)">Trusted by Creative Partners.</h2>
+                <h2 className="text-(--C100) lg:text-left md:text-center text-center">Trusted by Creative Partners.</h2>
               </div>
 
               <div className="flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px]">
@@ -363,6 +347,7 @@ export default async function Home() {
                     {isAbsolute[item.order_index - 1] ? (
                       <div className="lg:absolute md:static static lg:top-[-315px] md:top-0 top-0 lg:left-auto md:left-0 left-0 bottom-0 right-0">
                         <Testimonial
+                          id={`testimonial-image-${item.order_index}`}
                           testimonial_image={item.testimonial_image}
                           user_name={item.user_name}
                           testimoni={item.testimoni}
@@ -370,6 +355,7 @@ export default async function Home() {
                       </div>
                     ) : (
                       <Testimonial
+                        id={`testimonial-image-${item.order_index}`}
                         testimonial_image={item.testimonial_image}
                         user_name={item.user_name}
                         testimoni={item.testimoni}

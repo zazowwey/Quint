@@ -1,8 +1,8 @@
 import { Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import Cta from "./components/CTA/cta";
-import Footer from "./components/Footer/Footer";
 import LayoutClient from "./components/LayoutClient";
+import FooterServer from "./components/Footer/FooterServer";
 
 
 const instrumentSerif = Instrument_Serif({
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             <Cta />
           </div>
           <div className="block pt-[184px] w-full overflow-hidden relative z-[3]">
-            <Footer />
+            <FooterServer />
           </div>
         </div>
       </body>

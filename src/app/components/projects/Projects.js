@@ -2,7 +2,7 @@ import Secondary from "../Secondary_button/Secondary";
 
 export default function Projects({ file_name, project_name, project_year, projects_desc, project_image_01, project_file_01_A, project_file_01_B, project_image_02, project_file_02_A, project_file_02_B, project_image_03, project_file_03_A, project_file_03_B, wedo_01, wedo_02, wedo_03, wedo_04, padding_top }) {
     return (
-        <div className="w-[100vw] lg:h-[100vh] h-auto flex flex-row items-start justify-end lg:overflow-hidden overflow-visible bg-(--C100)">
+        <div className="w-[100vw] lg:h-[100vh] h-auto flex flex-row items-start justify-end lg:overflow-hidden overflow-visible">
             <div className="w-full h-[100%] flex lg:flex-row md:flex-col flex-col items-stretch justify-end">
 
                 <div className="lg:w-[43px] md:w-full w-full lg:h-[126vh] md:h-[41px] h-[41px] border-r-[1px] border-(--C200) lg:[padding-top:var(--pt)] flex flex-row items-start justify-end " style={{ "--pt": padding_top }}>
