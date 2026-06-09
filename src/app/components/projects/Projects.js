@@ -1,6 +1,11 @@
 import Secondary from "../Secondary_button/Secondary";
 
-export default function Projects({ file_name, project_name, project_year, projects_desc, project_image_01, project_file_01_A, project_file_01_B, project_image_02, project_file_02_A, project_file_02_B, project_image_03, project_file_03_A, project_file_03_B, wedo_01, wedo_02, wedo_03, wedo_04, padding_top }) {
+export default function Projects({ file_name, project_name, project_year, projects_desc,images, wedo_01, wedo_02, wedo_03, wedo_04, padding_top }) {
+
+    const project_image_01 = images?.[0];
+    const project_image_02 = images?.[1];
+    const project_image_03 = images?.[2];
+
     return (
         <div className="w-[100vw] lg:h-[100vh] h-auto flex flex-row items-start justify-end lg:overflow-hidden overflow-visible">
             <div className="w-full h-[100%] flex lg:flex-row md:flex-col flex-col items-stretch justify-end">
@@ -43,26 +48,26 @@ export default function Projects({ file_name, project_name, project_year, projec
 
                             <div className="flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[416px] md:h-auto h-auto">
                                 <div className="flex flex-row items-stretch justify-start gap-[12px]">
-                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_file_01_A}</p>
-                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_file_01_B}</p>
+                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_image_01?.file_name}</p>
+                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_image_01?.file_desc}</p>
                                 </div>
-                                <img src={project_image_01} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[253px] h-[120px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
+                                <img src={project_image_01?.image_url} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[253px] h-[120px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
                             </div>
 
                             <div className="flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[367px] md:h-auto h-auto lg:absolute md:absolute static top-auto lg:left-[298px] md:left-[193px] left-[103px] right-auto bottom-0">
                                 <div className="flex flex-row items-stretch justify-start gap-[12px]">
-                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_file_02_A}</p>
-                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_file_02_B}</p>
+                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_image_02?.file_name}</p>
+                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_image_02?.file_desc}</p>
                                 </div>
-                                <img src={project_image_02} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[221px] h-[105px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
+                                <img src={project_image_02?.image_url} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[221px] h-[105px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
                             </div>
 
                             <div className="flex flex-col items-end justify-start gap-[8px] lg:w-[362px] md:w-auto w-auto lg:h-[318px] md:h-auto h-auto lg:absolute md:absolute static top-auto lg:left-auto md:left-[386px] left-[182px] lg:right-0 md:right-auto right-auto lg:bottom-0 md:bottom-0 bottom-0">
                                 <div className="flex flex-row items-stretch justify-start gap-[12px]">
-                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_file_03_A}</p>
-                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_file_03_B}</p>
+                                    <p className="text-b003 font-Secondary text-(--C300) lg:block md:hidden hidden">{project_image_03?.file_name}</p>
+                                    <p className="text-b003 font-Secondary text-(--C200) lg:block md:hidden hidden">{project_image_03?.file_desc}</p>
                                 </div>
-                                <img src={project_image_03} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[189px] h-[90px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
+                                <img src={project_image_03?.image_url} alt="Project Image" className="lg:w-[100%] md:w-[234px] w-[111px] max-w-[100%] lg:h-[100%] md:h-[189px] h-[90px] max-h-[391px] object-cover shadow-[-12px_-2px_50px_rgba(0,0,0,0.3)]" />
                             </div>
 
                         </div>

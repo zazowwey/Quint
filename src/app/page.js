@@ -6,30 +6,27 @@ import AboutScroll from "./components/Interaction/About_Scroll";
 import TestimonialScroll from "./components/Interaction/Testimonial_scroll";
 import HeroAnimation from "./components/Interaction/Hero_load";
 import {
-  getHeroContent,
   getHeroMeta,
-  getHeroImages,
-  getAboutContent,
-  getProjectOverview,
+  // getHeroImages,
+  // getAboutContent,
+  // getProjectOverview,
   getProjectItems,
   getServicesHeader,
   getServices,
-  getServiceImages,
+  // getServiceImages,
   getTestimonials,
+  getSections,
+  getGlobalAssets,
 } from "@/lib/fetch/queries";
 
 export default async function Home() {
 
-  const heroContent = await getHeroContent();
   const heroMeta = await getHeroMeta();
-  const heroImages = await getHeroImages();
-  const about = await getAboutContent();
-  const projectOvw = await getProjectOverview();
   const project = await getProjectItems();
-  const service_header = await getServicesHeader();
   const service = await getServices();
-  const service_images = await getServiceImages();
   const testimonials = await getTestimonials();
+  const sections = await getSections();
+  const globalAssets = await getGlobalAssets();
 
   const imageStyles = [
     "w-[604px] h-[340px] object-cover absolute z-[1] top-auto bottom-auto right-auto left-auto shadow-[0px_7px_70px_rgba(0,0,0,0.3)] rotate-[32deg]",
@@ -56,6 +53,18 @@ export default async function Home() {
 
   const projectCount = project?.length ?? 0;
 
+  // sections
+
+  const hero = sections?.find(section => section.id === 1 );
+  const about_section = sections?.find(section => section.id === 2 );
+  const project_section = sections?.find(section => section.id === 3 );
+  const service_section = sections?.find(section => section.id === 4 );
+  const testimonial_section = sections?.find(section => section.id === 5 );
+  const logo_white = globalAssets?.find(asset => asset.key === "logo-white");
+  const logo_black = globalAssets?.find(asset => asset.key === "logo-black");
+  const service_images = service_section?.section_images?.filter(asset => asset.section_id === 4);
+
+
   return (
     <main>
 
@@ -74,7 +83,7 @@ export default async function Home() {
 
                 <div className="w-full flex flex-col items-center justify-center relative">
                   <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
-                    {heroContent?.headline_top?.split("").map((char, i) => (
+                    {hero?.heading?.split("").map((char, i) => (
                       <span key={i} className="hero-char-top">
                         {char === " " ? "\u00A0" : char}
                       </span>
@@ -85,7 +94,7 @@ export default async function Home() {
 
                 <div className="w-full flex flex-col items-center justify-center">
                   <span className="text-d001 w-auto text-center leading-[1.2em] tracking-ls02">
-                    {heroContent?.headline_bottom?.split("").map((char, i) => (
+                    {hero?.sub_heading?.split("").map((char, i) => (
                       <span key={i} className="hero-char-bottom">
                         {char === " " ? "\u00A0" : char}
                       </span>
@@ -97,7 +106,7 @@ export default async function Home() {
                 <div className="w-full h-full flex flex-col items-center justify-center lg:absolute md:static static z-[33] md:pt-[43px] lg:pt-0 pt-[87px]">
                   <div className="hero-badge w-auto h-auto p-[4px] overflow-hidden relative z-3 bg-(--C100) rounded-full flex flex-row items-center justify-start gap-[10px]">
                     <div className="w-[32px] h-[32px] rounded-full py-[4px] px-[8px] bg-(--C300) cursor-pointer flex flex-row items-center">
-                      <img src="/images/logo.svg" alt="logo" className="w-[16px] h-[16px] animate-loopBrand" />
+                      <img src={logo_white?.image_url} alt="logo" className="w-[16px] h-[16px] animate-loopBrand" />
                     </div>
                     <h6 className="text-(--C300) pr-[16px] blend-difference flex flex-row items-start z-3 italic fw-bold">
                       Hover This!
@@ -140,7 +149,7 @@ export default async function Home() {
               </div>
 
               <div className="hidden flex-row items-center justify-center overflow-hidden absolute z-[10] top-0 bottom-0 right-0 left-0">
-                {heroImages?.map((item) => (
+                {hero?.section_images?.map((item) => (
                   <img
                     key={item.id}
                     src={item.image_url}
@@ -166,22 +175,24 @@ export default async function Home() {
                     <div className="w-full h-full flex flex-col items-stretch justify-center gap-[64px] relative">
 
                       <div className="flex flex-col lg:items-start md:items-start items-center justify-center gap-[24px]">
-                        <h6 className="text-(--C300) w-full text-center">Overview</h6>
+                        <h6 className="text-(--C300) w-full text-center">{about_section?.heading}</h6>
                         <div className="flex lg:flex-row md:flex-row flex-col lg:items-start md:items-start items-center lg:w-full md:w-full justify-center lg:gap-[0px] md:gap-[0px] gap-[40px]">
-                          <span className="text-d002 text-(--C300) w-auto text-center leading-lh01 tracking-ls02">{about?.title}</span>
-                          <img src={about?.logo_url} alt="logo" className="lg:w-[72px] md:w-[38px] w-[20px] lg:h-[72px] md:h-[42px] h-[22px] animate-loopBrand" />
+                          <span className="text-d002 text-(--C300) w-auto text-center leading-lh01 tracking-ls02">{about_section?.sub_heading}</span>
+                          <img src={logo_black?.image_url} alt="logo" className="lg:w-[72px] md:w-[38px] w-[20px] lg:h-[72px] md:h-[42px] h-[22px] animate-loopBrand" />
                         </div>
                       </div>
 
                       <div className="flex lg:flex-row md:flex-col flex-col lg:items-stretch md:items-end items-end justify-center lg:gap-[140px] md:gap-[64px] gap-[40px]">
                         <div className="lg:pt-[100px] md:pt-[53px] pt-[0px] h-auto flex flex-col items-stretch justify-end gap-[32px]">
-                          <p className="text-d003 text-(--C300) flex flex-col items-center justify-center lg:block md:block">{about?.headline_regular}<span className="text-(--C100) text-d003 bg-(--C400)">{about?.headline_highlight}</span></p>
+                          <p className="text-d003 text-(--C300) flex flex-col items-center justify-center lg:block md:block">{about_section?.section_content?.content.headline_regular}
+                            <span className="text-(--C100) text-d003 bg-(--C400) mx-[8px]">{about_section?.section_content?.content.headline_highlight}</span>
+                          </p>
                           <div className="flex lg:flex-row md:flex-row flex-col items-stretch justify-start gap-[20px]">
-                            <p className="text-b002 text-(--C300) font-Secondary lg:w-[200px] md:w-[50%] w-full text-justify">{about?.body_text_1}</p>
-                            <p className="text-b002 text-(--C300) font-Secondary lg:w-[200px] md:w-[50%] w-full text-justify">{about?.body_text_2}</p>
+                            <p className="text-b002 text-(--C300) font-Secondary lg:w-[215px] md:w-[50%] w-full text-justify">{about_section?.section_content?.content.body_text.slice(0, 220)}</p>
+                            <p className="text-b002 text-(--C300) font-Secondary lg:w-[215px] md:w-[50%] w-full text-justify">{about_section?.section_content?.content.body_text.slice(220)}</p>
                           </div>
                         </div>
-                        <img src={about?.image_url} alt="Quint about section" className="lg:w-[450px] md:w-[450px] w-full h-[320px] object-cover" />
+                        <img src={about_section?.section_content?.content.image_url} alt="Quint about section" className="lg:w-[450px] md:w-[450px] w-full h-[320px] object-cover" />
                       </div>
 
                       <div className="flex flex-row items-end justify-end pr-[62px] absolute bottom-0 right-0">
@@ -203,16 +214,16 @@ export default async function Home() {
 
                     <div className="flex lg:flex-row md:flex-row flex-col lg:items-center md:items-start lg:justify-center md:justify-start gap-[80px] pt-[91px] pb-[21px] px-(--main-padding) lg:h-full h-auto w-full">
                       <div className="flex flex-col items-end justify-start gap-[80px] w-full max-w-[420px]">
-                        <p className="text-d003 font-Primary text-(--C300)">{projectOvw?.description}</p>
+                        <p className="text-d003 font-Primary text-(--C300)">{project_section?.heading}</p>
                         <div className="w-full flex flex-row items-end justify-end">
-                          <img src={projectOvw?.logo_url} alt="about logo" className="w-[72px] h-[80px]" />
+                          <img src={logo_black?.image_url} alt="about logo" className="w-[72px] h-[80px] animate-loopBrand" />
                         </div>
                       </div>
 
                       <div className="flex flex-row items-center lg:justify-center md:justify-end justify-end lg:w-[368px] md:w-full w-full lg:h-[737px] md:h-[598px] h-[450px]">
                         <div className="flex flex-row items-center justify-start lg:w-[283px] md:w-[283px] w-[157px] lg:h-[700px] md:h-[700px] h-[450px] lg:overflow-hidden bg-(--C300) rounded-[100%] rotate-[7deg] relative">
                           <div className="flex flex-row items-end justify-end lg:w-[600px] md:w-[400px] rotate-[-7deg] absolute gap-[0px]">
-                            <span className="text-d002 text(--C100) font-Primary text-left max-w-[470px]" id="dm-project">{projectOvw?.section_title}</span>
+                            <span className="text-d002 text(--C100) font-Primary text-left max-w-[470px]" id="dm-project">{project_section?.sub_heading}</span>
                           </div>
                         </div>
                       </div>
@@ -235,15 +246,7 @@ export default async function Home() {
                                   project_name={item.project_name}
                                   project_year={item.project_year}
                                   projects_desc={item.projects_desc}
-                                  project_image_01={item.image_url_01}
-                                  project_file_01_A={item.file_01_a}
-                                  project_file_01_B={item.file_01_b}
-                                  project_image_02={item.image_url_02}
-                                  project_file_02_A={item.file_02_a}
-                                  project_file_02_B={item.file_02_b}
-                                  project_image_03={item.image_url_03}
-                                  project_file_03_A={item.file_03_a}
-                                  project_file_03_B={item.file_03_b}
+                                  images={item.project_img}
                                   wedo_01={item.wedo_01}
                                   wedo_02={item.wedo_02}
                                   wedo_03={item.wedo_03}
@@ -274,15 +277,7 @@ export default async function Home() {
                             project_name={item.project_name}
                             project_year={item.project_year}
                             projects_desc={item.projects_desc}
-                            project_image_01={item.image_url_01}
-                            project_file_01_A={item.file_01_a}
-                            project_file_01_B={item.file_01_b}
-                            project_image_02={item.image_url_02}
-                            project_file_02_A={item.file_02_a}
-                            project_file_02_B={item.file_02_b}
-                            project_image_03={item.image_url_03}
-                            project_file_03_A={item.file_03_a}
-                            project_file_03_B={item.file_03_b}
+                            images={item.project_img}
                             wedo_01={item.wedo_01}
                             wedo_02={item.wedo_02}
                             wedo_03={item.wedo_03}
@@ -304,14 +299,15 @@ export default async function Home() {
       </div>
 
       {/* Service section */}
+
       <section className="pt-[120px]">
         <div className="mx-auto w-full">
           <div className="flex flex-col items-stretch justify-start gap-[120px]">
 
             <div className="flex flex-col items-center justify-center gap-[32px]">
-              <h6 className="text-(--C100)">Capabilities</h6>
-              <h2 className="text-(--C100)">{service_header?.heading}</h2>
-              <p className="text-b002 text-(--C100) font-Secondary max-w-[400px] w-[400px] text-center">{service_header?.description}</p>
+              <h6 className="text-(--C100)">{service_section?.heading}</h6>
+              <h2 className="text-(--C100)">{service_section?.sub_heading}</h2>
+              <p className="text-b002 text-(--C100) font-Secondary max-w-[400px] w-[400px] text-center">{service_section?.section_content?.content.service_desc}</p>
             </div>
 
             <div>
@@ -337,8 +333,8 @@ export default async function Home() {
             <div className="w-full flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px] h-auto relative z-[3]">
 
               <div className="flex flex-col items-center justify-center">
-                <h6 className="text-(--C100)">Written</h6>
-                <h2 className="text-(--C100) lg:text-left md:text-center text-center">Trusted by Creative Partners.</h2>
+                <h6 className="text-(--C100)">{testimonial_section?.heading}</h6>
+                <h2 className="text-(--C100) lg:text-left md:text-center text-center">{testimonial_section?.sub_heading}</h2>
               </div>
 
               <div className="flex flex-col items-stretch justify-start gap-[111px] pt-[80px] pb-[110px]">

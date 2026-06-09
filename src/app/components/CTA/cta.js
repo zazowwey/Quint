@@ -1,9 +1,10 @@
-import { getCTAContent, getCTAImages } from "@/lib/fetch/queries";
+import { getSections } from "@/lib/fetch/queries";
 
 export default async function Cta(){
 
-    const cta_content = await getCTAContent();
-    const cta_image = await getCTAImages();
+    const cta_content = await getSections();
+
+    const cta = cta_content?.find(section => section.id === 6);
 
 
     const ctaImageStyles = [
@@ -35,7 +36,7 @@ export default async function Cta(){
 
                         <div className = "flex flex-col items-stretch justify-between pb-[64px] h-[100vh] relative z-[2]">
                             <div className = "flex flex-col items-center justify-center h-[100%]">
-                                <span className = "text-d002 font-Primary text-(--C100) text-center">{cta_content?.headline}<br/>{cta_content?.cta_text}</span>
+                                <span className = "text-d002 font-Primary text-(--C100) text-center">{cta?.heading}<br/>{cta?.sub_heading}</span>
                             </div>
 
                             {/* Progress Bar */}
@@ -76,9 +77,9 @@ export default async function Cta(){
                             </div>
 
                             {/* CTA Images */}
-                            <div className = "hidden flex flex-col items-center justify-end w-[100%] h-[100%] overflow-hidden absolute z-[2] top-0 bottom-0 left-0 right-0">
+                            <div className = "hidden flex-col items-center justify-end w-[100%] h-[100%] overflow-hidden absolute z-[2] top-0 bottom-0 left-0 right-0">
                                 <div className = "w-[100%] h-[120vh] relative">
-                                    {cta_image?.map((item) => (
+                                    {cta?.section_images?.map((item) => (
                                         <img key={item.id} src={item.image_url} alt="cta image" className={`${ctaImageStyles[item.order_index - 1]}`}/>
                                     ))}
                                 </div>

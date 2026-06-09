@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 
-export default function Footer({ footer }) {
+export default function Footer({ footer, logo_black, character }) {
 
 
     const [form, setForm] = useState({
@@ -24,7 +24,7 @@ export default function Footer({ footer }) {
             body: JSON.stringify({
                 to: form.to,
                 subject: `Ini adalah percobaan dari ${form.firstName} ${form.lastName}`,
-                html: `Halo, ini pesan dari ${form.firstName} ${form.lastName} dengan email ${form.to}`,
+                html: `Halo, ini pesan dari ${form.firstName} ${form.lastName} dengan email tujuan ${form.to}`,
             }),
         });
 
@@ -51,10 +51,10 @@ export default function Footer({ footer }) {
 
                         <div className="flex flex-col items-stretch justify-start gap-[16px]">
                             <div className="w-[100%] px-(--main-padding) relative border-b-[1px] border-(--C200)">
-                                <p className="text-b002 text-(--C300) text-left font-Secondary">{footer?.desc_line_1}</p>
+                                <p className="text-b002 text-(--C300) text-left font-Secondary">{footer?.heading}</p>
                             </div>
                             <div className="w-[100%] px-(--main-padding) relative border-b-[1px] border-(--C200)">
-                                <p className="text-b002 text-(--C300) text-left font-Secondary">{footer?.desc_line_2}</p>
+                                <p className="text-b002 text-(--C300) text-left font-Secondary">{footer?.sub_heading}</p>
                             </div>
                         </div>
 
@@ -70,7 +70,7 @@ export default function Footer({ footer }) {
                             {/* Footer form */}
 
                             <div className="flex flex-col items-stretch justify-start gap-[16px] lg:w-auto md:w-auto w-[100%]">
-                                <h6 className="text-(--C300)">{footer?.form_heading}</h6>
+                                <h6 className="text-(--C300)">{footer?.section_content?.content.form_heading}</h6>
                                 <form className="w-full" onSubmit={handleSubmit}>
                                     <div className="flex flex-row items-stretch justify-start w-[100%]">
                                         <input className="border-y-[1px] border-(--C200) border-r-[1px] lg:w-[263px] md:w-[263px] w-[100%] h-[40px] px-[12px] py-[8px] outline-none placeholder-(--C200) font-Secondary text-(--C200)" type="text" placeholder="First Name" name="firstName" onChange={handleChange}></input>
@@ -99,11 +99,11 @@ export default function Footer({ footer }) {
 
                         <div className="flex flex-row items-end lg:justify-start md:justify-start justify-center lg:gap-[120px] md:gap-0 gap-0 perspective-[1000px] perspective-origin-[50%_50%] lg:h-auto md:h-[569px] h-auto">
                             <div className="pt-[80px] h-full lg:block md:block hidden">
-                                <img src={footer?.logo_url} alt="Logo" className="w-[72px] h-[80px] animate-loopBrand" />
+                                <img src={logo_black?.image_url} alt="Logo" className="w-[72px] h-[80px] animate-loopBrand" />
                             </div>
-                            <img src={footer?.character_url} alt="character" className="lg:w-[376px] md:w-[294px] w-[236px] lg:h-[510px] md:h-[400px] h-[320px] object-cover" />
+                            <img src={character?.image_url} alt="character" className="lg:w-[376px] md:w-[294px] w-[236px] lg:h-[510px] md:h-[400px] h-[320px] object-cover" />
                             <div className="pt-[80px] flex flex-col items-start justify-end pb-[120px] h-full lg:flex md:hidden hidden">
-                                <img src={footer?.logo_url} alt="Logo" className="w-[72px] h-[80px] animate-loopBrand" />
+                                <img src={logo_black?.image_url} alt="Logo" className="w-[72px] h-[80px] animate-loopBrand" />
                             </div>
                         </div>
 
@@ -151,12 +151,12 @@ export default function Footer({ footer }) {
                                     <img src="/images/ig.svg" alt="instagram" className="w-[24px] h-[24px]" />
                                 </div>
                             </div>
-                            <p className="text-b003 text-(--C200) font-Secondary">{footer?.copyright}</p>
+                            <p className="text-b003 text-(--C200) font-Secondary">{footer?.section_content?.content.copyright}</p>
                         </div>
 
                         <div className="absolute top-auto left-[24px] bottom-[24px] right-auto">
-                            <p className="text-b003 text-(--C300) font-Secondary">Designed By <span className="underline">{footer?.credit_name}</span></p>
-                            <p className="text-b003 text-(--C300) font-Secondary underline">{footer?.credit_email}</p>
+                            <p className="text-b003 text-(--C300) font-Secondary">Designed By <span className="underline">{footer?.section_content?.content.credit_name}</span></p>
+                            <p className="text-b003 text-(--C300) font-Secondary underline">{footer?.section_content?.content.credit_email}</p>
                         </div>
                     </div>
 
