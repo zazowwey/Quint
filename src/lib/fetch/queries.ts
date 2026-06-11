@@ -28,38 +28,6 @@ export async function getHeroImages() {
     return data;
 }
 
-// export async function getAboutContent() {
-
-//   const { data, error } = await supabase
-//     .from("about_content")
-//     .select("*")
-//     .single();
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
-
-
-
-// export async function getProjectOverview() {
-
-//   const { data, error } = await supabase
-//     .from("project_overview")
-//     .select("*")
-//     .single();
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
-
 export async function getProjectItems() {
   const { data, error } = await supabase
     .from("project_item")
@@ -77,21 +45,6 @@ export async function getProjectItems() {
   }));
 }
 
-// export async function getServicesHeader() {
-
-//   const { data, error } = await supabase
-//     .from("services_header")
-//     .select("*")
-//     .single();
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
-
 export async function getServices() {
   const { data, error } = await supabase
     .from("services")
@@ -106,23 +59,6 @@ export async function getServices() {
     return data
 }
 
-
-// export async function getServiceImages() {
-
-//   const { data, error } = await supabase
-//     .from("section_images")
-//     .select("*")
-//     .eq("section","service")
-//     .order("order_index");
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
-
 export async function getTestimonials() {
   const { data, error } = await supabase
     .from("testimonials")
@@ -136,37 +72,6 @@ export async function getTestimonials() {
     
     return data
 }
-
-// export async function getCTAContent() {
-
-//     const { data, error } = await supabase 
-//         .from("cta_content")
-//         .select("*")
-//         .single();
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
-
-// export async function getCTAImages() {
-
-//     const { data, error }= await supabase
-//         .from("section_images")
-//         .select("*")
-//         .eq("section", "cta")
-//         .order("order_index");
-
-//     if (error) {
-//         console.error(error);
-//         return null
-//     }
-    
-//     return data
-// }
 
 export async function getSections() {
     const { data, error }= await supabase
@@ -192,7 +97,7 @@ export async function getGlobalAssets() {
     if (error) {
         console.error(error);
         return null
-    } console.log("Global Assets:", data);
+    }
 
     return data
 }

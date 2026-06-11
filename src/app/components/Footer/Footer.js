@@ -23,8 +23,11 @@ export default function Footer({ footer, logo_black, character }) {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({
                 to: form.to,
-                subject: `Ini adalah percobaan dari ${form.firstName} ${form.lastName}`,
-                html: `Halo, ini pesan dari ${form.firstName} ${form.lastName} dengan email tujuan ${form.to}`,
+                subject: `Welcome to quint — we received your inquiry`,
+                html: `<h1>Hi ${form.firstName} ${form.lastName},</h1>
+                <p>Thank you for reaching out to us! We have received your inquiry and will get back to you as soon as possible.
+                </p><p>Best regards,
+                <br/>The quint Team</p>`,
             }),
         });
 

@@ -7,13 +7,8 @@ import TestimonialScroll from "./components/Interaction/Testimonial_scroll";
 import HeroAnimation from "./components/Interaction/Hero_load";
 import {
   getHeroMeta,
-  // getHeroImages,
-  // getAboutContent,
-  // getProjectOverview,
   getProjectItems,
-  getServicesHeader,
   getServices,
-  // getServiceImages,
   getTestimonials,
   getSections,
   getGlobalAssets,
@@ -75,7 +70,7 @@ export default async function Home() {
       <div className="w-full lg:h-[900vh] h-auto relative" id="hero-about-wrapper">
 
         {/* Hero section */}
-        <section id="hero-section"className="w-full h-[200vh] pb-[21px] lg:sticky static top-0 left-auto right-auto bottom-auto z-[1]">
+        <section id="hero-section"className="w-full lg:h-[200vh] h-[100vh] pb-[21px] lg:sticky static top-0 left-auto right-auto bottom-auto z-[1]">
           <div className="w-full h-[100vh] pt-[102px] relative flex flex-row items-center justify-center">
             <div className="w-full flex flex-col items-center justify-center gap-[56px]">
 
