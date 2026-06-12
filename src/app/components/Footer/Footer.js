@@ -25,7 +25,7 @@ export default function Footer({ footer, logo_black, character }) {
                 to: form.to,
                 subject: `Welcome to quint — we received your inquiry`,
                 html: `<h1>Hi ${form.firstName} ${form.lastName},</h1>
-                <p>Thank you for reaching out to us! We have received your inquiry and will get back to you as soon as possible.
+                <p>Thank you for reaching out to us!<br /> We have received your inquiry and will get back to you as soon as possible.
                 </p><p>Best regards,
                 <br/>The quint Team</p>`,
             }),
